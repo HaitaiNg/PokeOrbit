@@ -26,7 +26,15 @@ const static int Radius = 500;
  */
 COrbit::COrbit()
 {
-
+	/**It uses the static member function Bitmap::FromFile to load
+	the image from the disk. Then it checks to ensure it loaded okay.
+	If not, it displays an error message using the message function box */
+	mAshImage = unique_ptr<Gdiplus::Bitmap>(
+		Bitmap::FromFile(L"images/ash.png"));
+	if (mAshImage->GetLastStatus() != Ok)
+	{
+		AfxMessageBox(L"Failed to open images/ash.png");
+	}
 }
 
 
@@ -73,6 +81,10 @@ void COrbit::OnDraw(Gdiplus::Graphics *graphics, int width, int height)
 	Pen pen(Color::Green);
 	graphics->DrawArc(&pen, -radius, -radius, radius * 2, radius * 2, 0, 360);
 	//graphics->DrawArc(&pen, radius, radius, radius * 2, radius * 2, 0, 360);
+
+	/// This will draw Ash Ketchum. Ash is located in the center of the orbit. 
+	graphics->DrawImage(mAshImage.get(), 0, 0,
+		mAshImage->GetWidth(), mAshImage->GetHeight());
 
 
 	/// Iterate through collection and draw them 
@@ -129,4 +141,16 @@ void COrbit::MoveToFront(std::shared_ptr<CItem> item)
 	}
 
 	mItems.push_back(item);
+}
+
+
+/** Handle updates for animation
+* \param elapsed The time since the last update
+*/
+void COrbit::Update(double elapsed)
+{
+	for (auto item : mItems)
+	{
+		item->Update(elapsed);
+	}
 }

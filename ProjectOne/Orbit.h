@@ -31,9 +31,19 @@ public:
 	/// Hit test on the orbit itself
 	std::shared_ptr<CItem> HitTest(int x, int y);
 
+	/// Move an item to the front of the list of items.
+	void MoveToFront(std::shared_ptr<CItem> item);
+
+	/// Handle updates for animation
+	void Update(double elapsed);
+
 private:
+
+	/// Ash Ketchum image 
+	std::unique_ptr<Gdiplus::Bitmap> mAshImage;
+
 	/// All of the items to populate our orbit
 	std::vector<std::shared_ptr<CItem> > mItems;
-	double Radius = 500; 
+	float Radius = 500; 
 };
 

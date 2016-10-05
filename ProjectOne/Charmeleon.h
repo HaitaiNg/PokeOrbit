@@ -3,21 +3,31 @@
  *
  * \author Haitai Ng 
  *
- * 
+ * Class for a pokemon Charmeleon type. Class that implements a Charmeleon 
  */
 
 #pragma once
 #include "Item.h"
-
+#include <memory>
+#include "Pokemon.h"
 
 /**
- * 
+ * Implements a Pokemon/ Charmeleon. Charmeleon is a fire pokemon derived from Pokemon 
  */
 class CCharmeleon :
-	public CItem
+	public CPokemon
 {
 public:
-	CCharmeleon();
+
+	///Constructor 
+	CCharmeleon(COrbit *orbit);
+
+	/// Default Constructor disabled  
+	CCharmeleon() = delete ;
+
+	/// Destructor 
 	virtual ~CCharmeleon();
+
+private:
 };
 

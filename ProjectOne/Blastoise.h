@@ -9,11 +9,13 @@
 #pragma once
 #include <memory>
 #include "Item.h"
+#include "Pokemon.h"
+#include "RotationalItem.h"
 
 /**
  * Implements a Pokemon/Blastoise. Blastoise is the slowest Pokemon. Blastoise is derived from Pokemon 
  */
-class CBlastoise : public CItem
+class CBlastoise : public CPokemon
 {
 public:
 	///Constructor 
@@ -28,13 +30,6 @@ public:
 	/// Destructor 
 	virtual ~CBlastoise();
 
-	/// Draw
-	void Draw(Gdiplus::Graphics * graphics);
-
-	/// hit test
-	bool HitTest(int x, int y);
-
 private: 
-	std::unique_ptr<Gdiplus::Bitmap> mBlastoiseImage;
 };
 

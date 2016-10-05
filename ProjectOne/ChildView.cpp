@@ -27,11 +27,15 @@ const int InitialX = 0;
 /// Initial fish Y location
 const int InitialY = 0;
 
+/// Frame duration in milliseconds
+const int FrameDuration = 30;
+
 /**
 * Constructor
 */
 CChildView::CChildView()
 {
+	srand((unsigned int)time(nullptr));
 }
 
 /**
@@ -48,6 +52,7 @@ BEGIN_MESSAGE_MAP(CChildView, CWnd)
 	ON_WM_LBUTTONDOWN()
 	ON_WM_LBUTTONUP()
 	ON_WM_MOUSEMOVE()
+	ON_WM_TIMER()
 END_MESSAGE_MAP()
 
 
@@ -86,6 +91,34 @@ void CChildView::OnPaint()
 
 	mOrbit.OnDraw(&graphics, rect.Width(), rect.Height());
 
+	/// Start the timer 
+	if (mFirstDraw)
+	{
+		mFirstDraw = false;
+		SetTimer(1, FrameDuration, nullptr);
+
+		/*
+		* Initialize the elapsed time system
+		*/
+		LARGE_INTEGER time, freq;
+		QueryPerformanceCounter(&time);
+		QueryPerformanceFrequency(&freq);
+
+		mLastTime = time.QuadPart;
+		mTimeFreq = double(freq.QuadPart);
+	
+	}
+
+	/*
+	* Compute the elapsed time since the last draw
+	*/
+	LARGE_INTEGER time;
+	QueryPerformanceCounter(&time);
+	long long diff = time.QuadPart - mLastTime;
+	double elapsed = double(diff) / mTimeFreq;
+	mLastTime = time.QuadPart;
+
+	mOrbit.Update(elapsed);
 }
 
 
@@ -142,4 +175,15 @@ void CChildView::OnMouseMove(UINT nFlags, CPoint point)
 	// TODO: Add your message handler code here and/or call default
 
 	CWnd::OnMouseMove(nFlags, point);
+}
+
+/**
+* Handle timer events
+* \param nIDEvent The timer event ID
+*/
+void CChildView::OnTimer(UINT_PTR nIDEvent)
+{
+	// TODO: Add your message handler code here and/or call default
+	Invalidate(); 
+	CWnd::OnTimer(nIDEvent);
 }

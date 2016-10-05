@@ -3,21 +3,30 @@
  *
  * \author Haitai Ng 
  *
- * 
+ *  Class that implements a pokemon of type Pikachu. 
  */
 
 #pragma once
 #include "Item.h"
+#include <memory>
+#include "Pokemon.h"
 
-
-/**
- * 
+ /**
+ * Implements a Pokemon/ Pikachu. Pikachu is a fire pokemon derived from Pokemon
  */
 class CPikachu :
-	public CItem
+	public CPokemon
 {
 public:
-	CPikachu();
-	virtual ~CPikachu();
-};
 
+	///Constructor 
+	CPikachu(COrbit *orbit);
+
+	/// Default Constructor disabled  
+	CPikachu() = delete;
+
+	/// Destructor 
+	virtual ~CPikachu();
+
+private:
+};

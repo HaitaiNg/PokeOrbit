@@ -6,13 +6,19 @@
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
+/// Blastoise filename 
+const std::wstring BlastoiseImageName(L"images/blastoise.png");
+
 namespace Testing
 {
 	/** Mock class for testing CItem */
 	class CItemMock : public CItem
 	{
 	public:
-		CItemMock(COrbit *orbit) : CItem(orbit) {}
+		/** Constructor
+		* \param aquarium The aquarium this is a member of */
+		CItemMock(COrbit *orbit) :
+			CItem(orbit, BlastoiseImageName) {}
 
 		/** Draw the item
 		* \param graphics The graphics context to draw on */

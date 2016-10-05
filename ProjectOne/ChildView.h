@@ -53,10 +53,17 @@ private:
 	//Any item we are currently dragging
 	std::shared_ptr<CItem> mGrabbedItem; ///< pointer to grabbed item 
 
+	/// True until the first time we draw
+	bool mFirstDraw = true;
+
+	long long mLastTime;    ///< Last time we read the timer
+	double mTimeFreq;       ///< Rate the timer updates
+
 public:
 	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
 	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
 	afx_msg void OnLButtonUp(UINT nFlags, CPoint point);
 	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
+	afx_msg void OnTimer(UINT_PTR nIDEvent);
 };
 

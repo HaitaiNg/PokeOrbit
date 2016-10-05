@@ -189,8 +189,10 @@
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="Orbit.h" />
     <ClInclude Include="Pikachu.h" />
+    <ClInclude Include="Pokemon.h" />
     <ClInclude Include="ProjectOne.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="RotationalItem.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -202,7 +204,9 @@
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="Orbit.cpp" />
     <ClCompile Include="Pikachu.cpp" />
+    <ClCompile Include="Pokemon.cpp" />
     <ClCompile Include="ProjectOne.cpp" />
+    <ClCompile Include="RotationalItem.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
