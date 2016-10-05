@@ -83,6 +83,7 @@ void COrbit::OnDraw(Gdiplus::Graphics *graphics, int width, int height)
 	//graphics->DrawArc(&pen, radius, radius, radius * 2, radius * 2, 0, 360);
 
 	/// This will draw Ash Ketchum. Ash is located in the center of the orbit. 
+	/// Shift the image a little bit. (-ashimagewidth /2, -ashimageheight/2
 	graphics->DrawImage(mAshImage.get(), 0, 0,
 		mAshImage->GetWidth(), mAshImage->GetHeight());
 
