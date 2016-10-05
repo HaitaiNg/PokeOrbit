@@ -1,13 +1,26 @@
+/**
+ * \file ChildView.h
+ *
+ * \author Haitai Ng 
+ *
+ * Class that implements the child window our program draws in.
+ *
+ * The window is a child of the main frame, which holds this
+ * window, the menu bar, and the status bar.
+ */ 
+
 
 // ChildView.h : interface of the CChildView class
 //
 
+#include "Orbit.h"
 
 #pragma once
 
 
-// CChildView window
-
+/**
+* The child window our program draws in.
+*/
 class CChildView : public CWnd
 {
 // Construction
@@ -32,5 +45,18 @@ public:
 protected:
 	afx_msg void OnPaint();
 	DECLARE_MESSAGE_MAP()
+
+private: 
+	/// An object that describes our aquarium
+	COrbit  mOrbit;
+
+	//Any item we are currently dragging
+	std::shared_ptr<CItem> mGrabbedItem; ///< pointer to grabbed item 
+
+public:
+	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
+	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
+	afx_msg void OnLButtonUp(UINT nFlags, CPoint point);
+	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
 };
 

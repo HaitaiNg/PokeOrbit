@@ -1,3 +1,11 @@
+/**
+ * \file ProjectOne.h
+ *
+ * \author Haitai Ng 
+ *
+ * 
+ */
+
 
 // ProjectOne.h : main header file for the ProjectOne application
 //

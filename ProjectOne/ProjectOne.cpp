@@ -1,3 +1,9 @@
+/**
+ * \file ProjectOne.cpp
+ *
+ * \author Haitai Ng 
+ */
+
 
 // ProjectOne.cpp : Defines the class behaviors for the application.
 //

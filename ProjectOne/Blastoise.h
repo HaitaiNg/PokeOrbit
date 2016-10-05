@@ -1,0 +1,40 @@
+/**
+ * \file Blastoise.h
+ *
+ * \author Haitai Ng 
+ *
+ *  Class for a pokemon Blastoise type. Class that implements a Blastoise 
+ */
+
+#pragma once
+#include <memory>
+#include "Item.h"
+
+/**
+ * Implements a Pokemon/Blastoise. Blastoise is the slowest Pokemon. Blastoise is derived from Pokemon 
+ */
+class CBlastoise : public CItem
+{
+public:
+	///Constructor 
+	CBlastoise(COrbit *orbit); 
+
+	/// Default constructor (disabled)
+	CBlastoise() = delete;
+
+	/// Copy constructor (disabled)
+	CBlastoise(const CBlastoise &) = delete;
+
+	/// Destructor 
+	virtual ~CBlastoise();
+
+	/// Draw
+	void Draw(Gdiplus::Graphics * graphics);
+
+	/// hit test
+	bool HitTest(int x, int y);
+
+private: 
+	std::unique_ptr<Gdiplus::Bitmap> mBlastoiseImage;
+};
+
