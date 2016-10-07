@@ -20,6 +20,8 @@
 #include "Blastoise.h"
 #include "Charmeleon.h"
 #include "Pikachu.h"
+#include "Pokestop.h"
+
 #include <algorithm>
 
 using namespace Gdiplus;
@@ -222,6 +224,11 @@ void CChildView::DisplayRotationalPokemon(double time)
 	{
 		/// to place image at origin use: x = -image->GetWidth() / 4 , y = -image->GetHeight() / 4 
 
+		///Pokestop Image is here 
+		auto pokestop = make_shared<CPokestop>(&mOrbit);
+		pokestop->SetLocation(399, 233);
+		mOrbit.Add(pokestop);
+		Invalidate();
 
 		auto blastoise = make_shared<CBlastoise>(&mOrbit);
 		//blastoise->SetLocation(-25, -27);
@@ -238,7 +245,6 @@ void CChildView::DisplayRotationalPokemon(double time)
 		pikachu->SetLocation(45, 0);
 		mOrbit.Add(pikachu);
 		Invalidate();
-
 	}
 
 	

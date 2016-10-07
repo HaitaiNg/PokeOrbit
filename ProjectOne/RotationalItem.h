@@ -29,7 +29,6 @@ protected:
 	///constructor 
 	CRotationalItem(COrbit * orbit, const std::wstring & filename);
 
-
 	/// Set the speed of the item fo
 	virtual void SetItemSpeed() {}
 
