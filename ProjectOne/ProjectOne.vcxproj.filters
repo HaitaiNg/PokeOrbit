@@ -63,6 +63,12 @@
     <ClInclude Include="Pokestop.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="LinearMovement.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PokeBall.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ProjectOne.cpp">
@@ -99,6 +105,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Pokestop.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LinearMovement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PokeBall.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

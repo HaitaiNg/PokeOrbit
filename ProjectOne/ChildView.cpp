@@ -21,7 +21,7 @@
 #include "Charmeleon.h"
 #include "Pikachu.h"
 #include "Pokestop.h"
-
+#include "PokeBall.h"
 #include <algorithm>
 
 using namespace Gdiplus;
@@ -173,6 +173,12 @@ void CChildView::OnLButtonDown(UINT nFlags, CPoint point)
 
 	/// Draw Pokemon at random intervals ********************THIS NEEDS TO BE FIXED 
 	DisplayRotationalPokemon(10);
+
+	auto pokeball = make_shared<CPokeBall>(&mOrbit);
+	pokeball->Update(0.1);
+	mOrbit.Add(pokeball);
+	Invalidate();
+
 }
 
 /**
