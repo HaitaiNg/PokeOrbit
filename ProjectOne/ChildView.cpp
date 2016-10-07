@@ -14,6 +14,18 @@
 #include "DoubleBufferDC.h"
 #include "Orbit.h"
 
+#include "Item.h"
+#include "RotationalItem.h"
+#include "Pokemon.h"
+#include "Blastoise.h"
+#include "Charmeleon.h"
+#include "Pikachu.h"
+#include <algorithm>
+
+using namespace Gdiplus;
+using namespace std; 
+
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -89,7 +101,11 @@ void CChildView::OnPaint()
 	CRect rect;
 	GetClientRect(&rect);
 
+	/// Draw the background and ash 
 	mOrbit.OnDraw(&graphics, rect.Width(), rect.Height());
+
+	/// Draw an object 
+	mOrbit.Draw(&graphics);
 
 	/// Start the timer 
 	if (mFirstDraw)
@@ -118,6 +134,7 @@ void CChildView::OnPaint()
 	double elapsed = double(diff) / mTimeFreq;
 	mLastTime = time.QuadPart;
 
+	/// Everytime we draw we determine how much time has elapsed since the last time we draw. 
 	mOrbit.Update(elapsed);
 }
 
@@ -151,6 +168,9 @@ void CChildView::OnLButtonDown(UINT nFlags, CPoint point)
 		mOrbit.MoveToFront(mGrabbedItem);
 		Invalidate();
 	}
+
+	/// Draw Pokemon at random intervals ********************THIS NEEDS TO BE FIXED 
+	DisplayRotationalPokemon(10);
 }
 
 /**
@@ -186,4 +206,40 @@ void CChildView::OnTimer(UINT_PTR nIDEvent)
 	// TODO: Add your message handler code here and/or call default
 	Invalidate(); 
 	CWnd::OnTimer(nIDEvent);
+
+}
+
+
+/**
+ *  Display the rotatinal pokemon 
+ * \param time 
+ */
+void CChildView::DisplayRotationalPokemon(double time)
+{
+
+	
+	if (time > 0)
+	{
+		/// to place image at origin use: x = -image->GetWidth() / 4 , y = -image->GetHeight() / 4 
+
+
+		auto blastoise = make_shared<CBlastoise>(&mOrbit);
+		//blastoise->SetLocation(-25, -27);
+		blastoise->SetLocation(370, 0);
+		mOrbit.Add(blastoise);
+		Invalidate();
+
+		auto charmeleon = make_shared<CCharmeleon>(&mOrbit);
+		charmeleon->SetLocation(200, 0);
+		mOrbit.Add(charmeleon);
+		Invalidate();
+
+		auto pikachu = make_shared<CPikachu>(&mOrbit);
+		pikachu->SetLocation(45, 0);
+		mOrbit.Add(pikachu);
+		Invalidate();
+
+	}
+
+	
 }

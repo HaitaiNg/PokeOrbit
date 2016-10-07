@@ -8,7 +8,7 @@
 
 #pragma once
 #include "Item.h"
-
+#include "RotationalItem.h"
 
 /**
  * Base class for a Pokemon 
@@ -16,11 +16,10 @@
  * items in the orbit. 
  */
 class CPokemon :
-	public CItem
+	public CRotationalItem
 {
 public:
 
-	
 	/// Default constructor (disabled) 
 	CPokemon() = delete; 
 
@@ -37,6 +36,8 @@ protected:
 	/// Handle updates in time of our fish 
 	void Update(double elapsed);
 
+	void SetSpeed(double minX, double maxX, double minY, double maxY);
+
 private: 
 	/// Pokemon speed in the X direction
 	double mSpeedX;
@@ -44,5 +45,7 @@ private:
 	/// Pokemon speed in the Y direction
 	double mSpeedY;
 
+	/// The elapsed time since construction
+	double mTime = 0;
 };
 

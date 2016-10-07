@@ -21,9 +21,21 @@ public:
 	/// Copy constructor (disabled) 
 	CRotationalItem(const CRotationalItem &) = delete;
 
+	/// Handle updates for animation
+	/// \param elapsed The time since the last update
+	virtual void Update(double elapsed);
+
 protected:
 	///constructor 
-	CRotationalItem(COrbit * orbit, const std::wstring & filename, double speedx, double speedy);
+	CRotationalItem(COrbit * orbit, const std::wstring & filename);
+
+
+	/// Set the speed of the item fo
+	virtual void SetItemSpeed() {}
+
+private:
+	double mSpeedX; 
+	double mSpeedY; 
 
 };
 

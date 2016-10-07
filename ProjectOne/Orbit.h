@@ -22,8 +22,11 @@ public:
 	COrbit();
 	virtual ~COrbit();
 
-	/// Draw an object 
+	/// Draws the background and ash 
 	void OnDraw(Gdiplus::Graphics * graphics, int width, int height);
+
+	/// Draws objects to fill the background
+	void Draw(Gdiplus::Graphics * graphics);
 
 	/// Add an item to our collection 
 	void Add(std::shared_ptr<CItem> item);

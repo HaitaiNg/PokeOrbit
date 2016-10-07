@@ -48,7 +48,7 @@ COrbit::~COrbit()
 
 
 /**
-* Draw the game area
+* Draw the game area & ash 
 * \param graphics The GDI+ graphics context to draw on
 * \param width Width of the client window
 * \param height Height of the client window
@@ -94,9 +94,17 @@ void COrbit::OnDraw(Gdiplus::Graphics *graphics, int width, int height)
 	graphics->DrawImage(mAshImage.get(), mAshImageX, mAshImageY,
 		mAshImage->GetWidth(), mAshImage->GetHeight());
 
+}
 
-	/// Iterate through collection and draw them 
-	for (auto item : mItems) ///< auto figures out the type automatically 
+
+/**
+* Draw the aquarium
+* \param graphics The GDI+ graphics context to draw on
+*/
+void COrbit::Draw(Gdiplus::Graphics *graphics)
+{
+	//Iterate through collection and draw them. 
+	for (auto item : mItems) ///< auto figures out the type automatically( try to use auto as much as possible) 
 	{
 		item->Draw(graphics);
 	}

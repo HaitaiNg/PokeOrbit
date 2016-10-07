@@ -10,7 +10,6 @@
 #include <memory>
 #include "Item.h"
 #include "Pokemon.h"
-#include "RotationalItem.h"
 
 /**
  * Implements a Pokemon/Blastoise. Blastoise is the slowest Pokemon. Blastoise is derived from Pokemon 

@@ -25,7 +25,8 @@ public:
 
 	/// Copy constructor (disabled)
 	CItem(const CItem &) = delete;
-
+	
+	/// Destructor 
 	virtual ~CItem();
 
 	/** The X location of the item
@@ -41,15 +42,35 @@ public:
 	* \param y Y location */
 	void SetLocation(double x, double y) { mX = x; mY = y; }
 
+	//! Draw this item
+	//! \param graphics Graphics device to draw on
 	virtual void Draw(Gdiplus::Graphics *graphics);
 
+	/** Test this item to see if it has been clicked on
+	* \param x X location on the aquarium to test
+	* \param y Y location on the aquarium to test
+	* \return true if clicked on */
 	virtual bool HitTest(int x, int y);
 
 	/// Handle updates for animation
 	/// \param elapsed The time since the last update
 	virtual void Update(double elapsed) {}
 
+	/// Get the orbit this item is in
+	/// \returns Orbit pointer
+	COrbit *GetAquarium() { return mOrbit; }
+
+	/// Get the display width of the item
+	/// \return Width
+	virtual int GetWidth() const { return mItemImage->GetWidth(); }
+
+	/// Get the display height of the item
+	/// \return Height
+	virtual int GetHeight() const { return mItemImage->GetHeight(); }
+
 protected:
+	///Citem type
+	/// \param orbit, filename 
 	CItem(COrbit *orbit, const std::wstring &filename);
 
 private:
