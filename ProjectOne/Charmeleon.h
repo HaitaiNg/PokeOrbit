@@ -25,9 +25,11 @@ public:
 	/// Default Constructor disabled  
 	CCharmeleon() = delete ;
 
+	/// Copy constructor (disabled)
+	CCharmeleon(const CCharmeleon &) = delete;
+
 	/// Destructor 
 	virtual ~CCharmeleon();
 
-private:
 };
 

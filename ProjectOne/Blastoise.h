@@ -29,6 +29,5 @@ public:
 	/// Destructor 
 	virtual ~CBlastoise();
 
-private: 
 };
 

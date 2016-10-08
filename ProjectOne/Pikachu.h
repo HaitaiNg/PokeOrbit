@@ -25,8 +25,9 @@ public:
 	/// Default Constructor disabled  
 	CPikachu() = delete;
 
+	/// Copy constructor (disabled)
+	CPikachu(const CPikachu &) = delete;
+
 	/// Destructor 
 	virtual ~CPikachu();
-
-private:
 };

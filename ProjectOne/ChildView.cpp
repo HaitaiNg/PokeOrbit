@@ -49,7 +49,7 @@ const int FrameDuration = 30;
 */
 CChildView::CChildView()
 {
-	srand((unsigned int)time(nullptr));
+	srand((unsigned int)time(nullptr)); //< random number generator 
 }
 
 /**
@@ -237,7 +237,6 @@ void CChildView::DisplayRotationalPokemon(double time)
 		Invalidate();
 
 		auto blastoise = make_shared<CBlastoise>(&mOrbit);
-		//blastoise->SetLocation(-25, -27);
 		blastoise->SetLocation(500, 0);
 		mOrbit.Add(blastoise);
 		Invalidate();

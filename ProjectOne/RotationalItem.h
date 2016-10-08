@@ -9,7 +9,6 @@
 #pragma once
 #include "Item.h"
 
-
 class CRotationalItem :
 	public CItem
 {

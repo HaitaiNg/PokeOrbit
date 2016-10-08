@@ -39,8 +39,6 @@ protected:
 	/// Set the speed of our Pokemon 
 	void SetSpeed(double minX, double maxX, double minY, double maxY);
 
-	/// Set the range for our Pokemon 
-
 private: 
 	/// Pokemon speed in the X direction
 	double mSpeedX;
@@ -56,5 +54,8 @@ private:
 
 	/// The elapsed time since construction
 	double mTime = 0;
+
+	/// Compute random range; 
+	double mRandomRadius; 
 };
 

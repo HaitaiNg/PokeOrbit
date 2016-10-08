@@ -22,7 +22,6 @@ public:
 	/// Constructor 
 	CPokestop::CPokestop(COrbit *orbit);
 
-
 	/// Destructor 
 	virtual ~CPokestop();
 
