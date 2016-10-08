@@ -16,19 +16,19 @@ const wstring CharmeleonImageName(L"images/charmeleon.png");
 
 //! Maximum speed in the X direction in
 //! in pixels per second
-const double MaxSpeedX = 60;
+const double MaxSpeedX = 0.04;
 
 //! Minimum speed in the X direction in
 //! in pixels per second
-const double MinSpeedX = 20;
+const double MinSpeedX = 0.04;
 
 //! Maximum speed in the Y direction in
 //! in pixels per second
-const double MaxSpeedY = 20;
+const double MaxSpeedY = 0.04;
 
 //! Minimum speed in the Y direction in
 //! in pixels per second
-const double MinSpeedY = 50;
+const double MinSpeedY = 0.04;
 
 
 /** Constructor

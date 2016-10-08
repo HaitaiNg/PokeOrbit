@@ -36,7 +36,10 @@ protected:
 	/// Handle updates in time of our fish 
 	void Update(double elapsed);
 
+	/// Set the speed of our Pokemon 
 	void SetSpeed(double minX, double maxX, double minY, double maxY);
+
+	/// Set the range for our Pokemon 
 
 private: 
 	/// Pokemon speed in the X direction
@@ -44,6 +47,12 @@ private:
 
 	/// Pokemon speed in the Y direction
 	double mSpeedY;
+
+	/// Object movement speed in the X direction 
+	double mObjectSpeedX; 
+
+	/// Object movement speed in the Y direction
+	double mObjectSpeedY; 
 
 	/// The elapsed time since construction
 	double mTime = 0;

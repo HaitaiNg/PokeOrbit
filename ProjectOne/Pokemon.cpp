@@ -12,15 +12,8 @@
  /// Maximum range up and down. This is 
  /// the maximum distance the fish will swim
  /// up and down in pixels
-const double MaxYRange = 500;
-
-const double MaxXRange = 500;
-
-/// The rate we swim up and down in radians per second
-const double YSwimRate = 0.05 * 2 * 3.1415;
-
-/// The rate we swim up and down in radians per second
-const double XSwimRate = 0.05 * 2 * 3.1415;
+const double MaxYRange = 500; ///500
+const double MaxXRange = 500; ///500
 
 
 /**
@@ -51,18 +44,22 @@ CPokemon::~CPokemon()
 */
 void CPokemon::Update(double elapsed)
 {
-	// What was the last sine value?
-	double lastSine = sin(mTime * YSwimRate);
+	/// The rate we swim up and down in radians per second
+	mObjectSpeedX = mSpeedX * 2 * 3.145; 
+	mObjectSpeedY = mSpeedY * 2 * 3.145; 
 
-	double lastCos = cos(mTime * XSwimRate);
+	// What was the last sine value?
+	double lastSine = sin(mTime * mObjectSpeedX);
+
+	double lastCos = cos(mTime * mObjectSpeedY);
 
 	// Update the time
 	mTime += elapsed;
 
 	// What is the new sine value?
-	double newSine = sin(mTime * YSwimRate);
+	double newSine = sin(mTime * mSpeedY * 2 * 3.145);
 
-	double newCos = cos(mTime * XSwimRate);
+	double newCos = cos(mTime *  mSpeedX * 2 * 3.145);
 
 	// How much the sine function changed is newSine - lastSine
 	double sineChange = newSine - lastSine;
@@ -70,20 +67,11 @@ void CPokemon::Update(double elapsed)
 	double cosChange = newCos - lastCos;
 
 	// And we can figure out the change to Y
-	double newY = GetY() + sineChange * MaxYRange / 2;
+	double newY = GetY() + sineChange * MaxYRange;
 
-	double newX = GetX() + cosChange * MaxXRange / 2; 
-
-	/// modified sine wave - from step 3 
-//	SetLocation(GetX() + mSpeedX * elapsed,
-	//	newY);
+	double newX = GetX() + cosChange * MaxXRange; 
 
 	SetLocation(newX, newY);
-
-	//SetLocation(GetX() + mSpeedX * elapsed,
-		//GetY() + mSpeedY * elapsed);
-
-
 }
 
 
@@ -102,6 +90,6 @@ void CPokemon::SetSpeed(double minX, double maxX, double minY, double maxY)
 	//mSpeedX = minX + ((double)rand() / RAND_MAX) * (maxX - minX);
 	//mSpeedY = minY + ((double)rand() / RAND_MAX) * (maxX - minY);
 
-	mSpeedX = minX;
-	mSpeedY = minY;
+	mSpeedX = -minX;
+	mSpeedY = -minY;
 }

@@ -238,19 +238,20 @@ void CChildView::DisplayRotationalPokemon(double time)
 
 		auto blastoise = make_shared<CBlastoise>(&mOrbit);
 		//blastoise->SetLocation(-25, -27);
-		blastoise->SetLocation(370, 0);
+		blastoise->SetLocation(500, 0);
 		mOrbit.Add(blastoise);
 		Invalidate();
 
+		
 		auto charmeleon = make_shared<CCharmeleon>(&mOrbit);
-		charmeleon->SetLocation(200, 0);
+		charmeleon->SetLocation(500, 0);
 		mOrbit.Add(charmeleon);
 		Invalidate();
-
+		
 		auto pikachu = make_shared<CPikachu>(&mOrbit);
-		pikachu->SetLocation(45, 0);
+		pikachu->SetLocation(500, 0);
 		mOrbit.Add(pikachu);
-		Invalidate();
+		Invalidate();  
 	}
 
 	

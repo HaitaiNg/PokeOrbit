@@ -17,19 +17,19 @@ const wstring BlastoiseImageName(L"images/blastoise.png");
 
 //! Maximum speed in the X direction in
 //! in pixels per second
-const double MaxSpeedX = 6;
+const double MaxSpeedX = 0.02;
 
 //! Minimum speed in the X direction in
 //! in pixels per second
-const double MinSpeedX = 2;
+const double MinSpeedX = 0.02;
 
 //! Maximum speed in the Y direction in
 //! in pixels per second
-const double MaxSpeedY = 2;
+const double MaxSpeedY = 0.02;
 
 //! Minimum speed in the Y direction in
 //! in pixels per second
-const double MinSpeedY = 5;
+const double MinSpeedY = 0.02;
 
  /** Constructor
  * \param aquarium The aquarium this is a member of
