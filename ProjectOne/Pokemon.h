@@ -39,6 +39,13 @@ protected:
 	/// Set the speed of our Pokemon 
 	void SetSpeed(double minX, double maxX, double minY, double maxY);
 
+	/// Return the radius so that all pokemon are properly centered around ash 
+	virtual double ReturnRadius() { return mRandomRadius; };
+
+	/** Accept a visitor
+	* \param visitor The visitor we accept */
+	virtual void Accept(CItemVisitor *visitor) override { visitor->VisitPokemon(this); }
+
 private: 
 	/// Pokemon speed in the X direction
 	double mSpeedX;

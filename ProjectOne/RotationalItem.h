@@ -31,6 +31,10 @@ protected:
 	/// Set the speed of the item for the object 
 	virtual void SetItemSpeed() {} 
 
+	/** Accept a visitor
+	* \param visitor The visitor we accept */
+	virtual void Accept(CItemVisitor *visitor) override { visitor->VisitRotationalItem(this); }
+
 private:
 	double mSpeedX; 
 	double mSpeedY; 

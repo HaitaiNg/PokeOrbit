@@ -92,3 +92,4 @@ void CPokemon::SetSpeed(double minX, double maxX, double minY, double maxY)
 	mSpeedX = -minX;
 	mSpeedY = -minY;
 }
+

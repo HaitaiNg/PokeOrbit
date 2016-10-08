@@ -10,13 +10,12 @@
 
 /// Forward references to all item types 
 
-class CRotationalItem; 
-
-class CPokemon;
-class CPokestop; 
-class CBlastoise;
-class CCharmeleon; 
-class CPikachu; 
+class CRotationalItem; ///< forward reference to CRotationalItem
+class CPokemon; ///< forward reference to CPokemon
+class CPokestop;  ///< forward reference to CPokestop 
+class CBlastoise; ///< forward reference to CBlastoise 
+class CCharmeleon;  ///< forward reference to CCharmeleon
+class CPikachu;  ///< forward reference to CPikachu
 
 
 /**

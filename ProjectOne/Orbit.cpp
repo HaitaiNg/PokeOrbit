@@ -170,3 +170,15 @@ void COrbit::Update(double elapsed)
 		item->Update(elapsed);
 	}
 }
+
+
+/** Accept a visitor for the collection
+* \param visitor The visitor for the collection
+*/
+void COrbit::Accept(CItemVisitor *visitor)
+{
+	for (auto item : mItems)
+	{
+		item->Accept(visitor);
+	}
+}

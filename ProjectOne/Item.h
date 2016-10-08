@@ -11,6 +11,7 @@
 
 #include <string>
 #include <memory>
+#include "ItemVisitor.h"
 
 class COrbit;
 
@@ -58,7 +59,7 @@ public:
 
 	/// Get the orbit this item is in
 	/// \returns Orbit pointer
-	COrbit *GetAquarium() { return mOrbit; }
+	COrbit *GetOrbit() { return mOrbit; }
 
 	/// Get the display width of the item
 	/// \return Width
@@ -67,6 +68,10 @@ public:
 	/// Get the display height of the item
 	/// \return Height
 	virtual int GetHeight() const { return mItemImage->GetHeight(); }
+
+	/** Accept a visitor
+	* \param visitor The visitor we accept */
+	virtual void Accept(CItemVisitor *visitor) {};
 
 protected:
 	///Citem type

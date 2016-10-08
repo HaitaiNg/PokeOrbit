@@ -9,7 +9,7 @@
 #pragma once
 #include <memory>
 #include <vector> 
-
+#include "ItemVisitor.h"
 class CItem; 
 
 /**
@@ -38,6 +38,9 @@ public:
 
 	/// Handle updates for animation
 	void Update(double elapsed);
+
+	/// Accepts a visitor for the collection
+	void Accept(CItemVisitor * visitor);
 
 private:
 

@@ -29,6 +29,10 @@ namespace Testing
 		* \param y Y location
 		* \returns true if we did click on the item */
 		virtual bool HitTest(int x, int y) { return false; }
+
+		/** Accept a visitor
+		*\param visitor The visitor we accept */
+			virtual void Accept(CItemVisitor *visitor) override { }
 	};
 
 	/** \breif Class that tests the class CItemTest */
