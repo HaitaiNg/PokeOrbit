@@ -22,6 +22,7 @@ const wstring PokestopImageName(L"images/pokestop.png");
 CPokestop::CPokestop(COrbit *orbit):
 	CRotationalItem(orbit, PokestopImageName)
 {
+
 }
 
 
@@ -31,3 +32,5 @@ CPokestop::CPokestop(COrbit *orbit):
 CPokestop::~CPokestop()
 {
 }
+
+

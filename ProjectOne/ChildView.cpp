@@ -232,25 +232,22 @@ void CChildView::DisplayRotationalPokemon(double time)
 
 		///Pokestop Image is here 
 		auto pokestop = make_shared<CPokestop>(&mOrbit);
-		pokestop->SetLocation(399, 233);
 		mOrbit.Add(pokestop);
 		Invalidate();
 
 		auto blastoise = make_shared<CBlastoise>(&mOrbit);
-		blastoise->SetLocation(500, 0);
 		mOrbit.Add(blastoise);
 		Invalidate();
 
-		
 		auto charmeleon = make_shared<CCharmeleon>(&mOrbit);
-		charmeleon->SetLocation(500, 0);
 		mOrbit.Add(charmeleon);
 		Invalidate();
 		
 		auto pikachu = make_shared<CPikachu>(&mOrbit);
-		pikachu->SetLocation(500, 0);
 		mOrbit.Add(pikachu);
-		Invalidate();  
+		Invalidate();
+	
+		 
 	}
 
 	
