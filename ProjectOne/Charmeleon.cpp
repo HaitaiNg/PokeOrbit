@@ -30,7 +30,6 @@ const double MaxSpeedY = 0.04;
 //! in pixels per second
 const double MinSpeedY = 0.04;
 
-
 /** Constructor
 * \param aquarium The aquarium this is a member of
 */
@@ -38,6 +37,8 @@ CCharmeleon::CCharmeleon(COrbit *orbit) :
 	CPokemon(orbit, CharmeleonImageName)
 {
 	SetSpeed(MinSpeedX, MaxSpeedX, MinSpeedY, MaxSpeedY);
+	SetRadius();
+	SetAngle(); 
 }
 
 

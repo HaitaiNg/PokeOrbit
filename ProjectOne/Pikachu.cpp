@@ -36,6 +36,8 @@ const double MaxSpeedY = 0.06;
 //! in pixels per second
 const double MinSpeedY = 0.06;
 
+//! Default radius 
+double PikachuRadius = 500;
 
 /**
 * Constructor
@@ -48,6 +50,7 @@ CPikachu::CPikachu(COrbit *orbit) :
 	CPokemon(orbit, PikachuImageName)
 {
 	SetSpeed(MinSpeedX, MaxSpeedX, MinSpeedY, MaxSpeedY);
+	SetRadius();
 }
 
 /**

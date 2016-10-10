@@ -40,7 +40,9 @@ protected:
 	void SetSpeed(double minX, double maxX, double minY, double maxY);
 
 	/// Return the radius so that all pokemon are properly centered around ash 
-	virtual double ReturnRadius() { return mRandomRadius; };
+	double SetRadius();
+	/// Return the angle 
+	double SetAngle();
 
 	/** Accept a visitor
 	* \param visitor The visitor we accept */
@@ -63,6 +65,9 @@ private:
 	double mTime = 0;
 
 	/// Compute random range; 
-	double mRandomRadius; 
+	double mRadius; 
+
+	///Get the angle
+	double mAngle; 
 };
 

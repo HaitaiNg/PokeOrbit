@@ -44,33 +44,21 @@ CPokemon::~CPokemon()
 */
 void CPokemon::Update(double elapsed)
 {
-	/// The rate we swim up and down in radians per second
-	mObjectSpeedX = mSpeedX * 2 * 3.145; 
-	mObjectSpeedY = mSpeedY * 2 * 3.145; 
+	double x = mRadius * cos(mAngle);
+	double y = -mRadius * sin(mAngle);
 
-	/// Compute the unique radius 
-	mRandomRadius = MaxXRange - (rand() % 400  + 1);
+	double sn = sin(mAngle);
+	double cs = cos(mAngle);
 
-	// What was the last sine value?
-	double lastSine = sin(mTime * mObjectSpeedX);
-	double lastCos = cos(mTime * mObjectSpeedY);
+	double newX = cs * x + sn * y; 
+	double newY = -sn * x + cs * y; 
 
-	// Update the time
-	mTime += elapsed;
+	x +=  mSpeedX * x * elapsed;
+	y +=  mSpeedX * y * elapsed;
 
-	// What is the new sine value?
-	double newSine = sin(mTime * mSpeedY * 2 * 3.145);
-	double newCos = cos(mTime *  mSpeedX * 2 * 3.145);
+	mAngle += 0.01; 
 
-	// How much the sine function changed is newSine - lastSine
-	double sineChange = newSine - lastSine;
-	double cosChange = newCos - lastCos;
-
-	// And we can figure out the change to Y
-	double newY = GetY() + sineChange * mRandomRadius;
-	double newX = GetX() + cosChange * mRandomRadius; 
-
-	SetLocation(newX, newY);
+	SetLocation(x, y);
 }
 
 
@@ -90,6 +78,18 @@ void CPokemon::SetSpeed(double minX, double maxX, double minY, double maxY)
 	//mSpeedY = minY + ((double)rand() / RAND_MAX) * (maxX - minY);
 
 	mSpeedX = -minX;
-	mSpeedY = -minY;
+	//mSpeedY = -minY;
 }
 
+double CPokemon::SetRadius()
+{
+	mRadius = (rand() % 300) + 120;
+	return mRadius; 
+}
+
+
+double CPokemon::SetAngle()
+{
+	mAngle = (rand() % 360);
+	return mAngle; 
+}

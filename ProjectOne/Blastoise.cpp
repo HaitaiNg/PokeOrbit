@@ -38,6 +38,8 @@ CBlastoise::CBlastoise(COrbit *orbit) :
 	CPokemon(orbit, BlastoiseImageName)
 {
 	SetSpeed(MinSpeedX, MaxSpeedX, MinSpeedY, MaxSpeedY);
+	SetRadius();
+	SetAngle(); 
 }
 
 
