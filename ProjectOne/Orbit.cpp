@@ -70,7 +70,12 @@ void COrbit::OnDraw(Gdiplus::Graphics *graphics, int width, int height)
 	float xOffset = width / 2.0f;
 	float yOffset = height / 2.0f;
 
-	graphics->TranslateTransform(xOffset, yOffset);
+	SetXOffset(width / 2.0f);
+	SetYOffset(height / 2.0f);
+
+	SetScale(scale);
+
+	graphics->TranslateTransform(GetXOffset(), GetYOffset());
 	graphics->ScaleTransform(scale, scale);
 
 	// From here on you are drawing virtual pixels...

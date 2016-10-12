@@ -89,3 +89,28 @@ void CItem::Draw(Gdiplus::Graphics *graphics)
 		(float)mItemImage->GetWidth(), (float)mItemImage->GetHeight());
 }
 
+/**
+*  Set the image file to draw
+* \param file The base filename. Blank files are allowed
+*/
+void CItem::SetImage(const std::wstring &file)
+{
+	if (!file.empty())
+	{
+		wstring filename = file;
+		mItemImage = unique_ptr<Bitmap>(Bitmap::FromFile(filename.c_str()));
+		if (mItemImage->GetLastStatus() != Ok)
+		{
+			wstring msg(L"Failed to open ");
+			msg += filename;
+			AfxMessageBox(msg.c_str());
+			return;
+		}
+	}
+	else
+	{
+		mItemImage.release();
+	}
+
+	mFile = file;
+}
