@@ -7,6 +7,7 @@
 #include "stdafx.h"
 #include "Orbit.h"
 #include "Blastoise.h"
+#include "PokeBall.h"
 #include <cmath>
 
 using namespace std; 
@@ -186,4 +187,13 @@ void COrbit::Accept(CItemVisitor *visitor)
 	{
 		item->Accept(visitor);
 	}
+}
+
+void COrbit::Click(double x, double y)
+{
+	
+	auto pokeball = make_shared<CPokeBall>(this);
+	pokeball->SetSpeed(x - 700,y - 550);
+	pokeball->Update(0.1);
+	this->Add(pokeball);
 }

@@ -181,13 +181,10 @@ void CChildView::OnLButtonDown(UINT nFlags, CPoint point)
 	}
 
 	/// Draw Pokemon at random intervals ********************THIS NEEDS TO BE FIXED 
-	DisplayRotationalPokemon(10);
+	//DisplayRotationalPokemon(10);
+	mOrbit.Click(point.x, point.y);
+	
 
-	auto pokeball = make_shared<CPokeBall>(&mOrbit);
-	pokeball->SetSpeed(point.x - 700, point.y - 550);
-	pokeball->Update(0.1);
-	mOrbit.Add(pokeball);
-	Invalidate();
 
 }
 
