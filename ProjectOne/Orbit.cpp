@@ -189,11 +189,10 @@ void COrbit::Accept(CItemVisitor *visitor)
 	}
 }
 
-void COrbit::Click(double x, double y)
+void COrbit::Click(double xclick, double yclick)
 {
-	
 	auto pokeball = make_shared<CPokeBall>(this);
-	pokeball->SetSpeed(x - 700,y - 550);
+	pokeball->SetSpeed(xclick - Width/2.0f, yclick - Height/2.0f);
 	pokeball->Update(0.1);
 	this->Add(pokeball);
 }
