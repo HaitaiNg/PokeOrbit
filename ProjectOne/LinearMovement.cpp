@@ -36,6 +36,7 @@ CLinearMovement::~CLinearMovement()
 */
 void CLinearMovement::Update(double elapsed)
 {
-	SetLocation(GetX() + mSpeedX * elapsed,
-				GetY() + mSpeedY * elapsed);
+	mPosX += mSpeedX * elapsed ;
+	mPosY += mSpeedY * elapsed ;
+	SetLocation(mPosX, mPosY);
 }

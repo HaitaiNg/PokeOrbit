@@ -184,6 +184,7 @@ void CChildView::OnLButtonDown(UINT nFlags, CPoint point)
 	DisplayRotationalPokemon(10);
 
 	auto pokeball = make_shared<CPokeBall>(&mOrbit);
+	pokeball->SetSpeed(point.x - 700, point.y - 550);
 	pokeball->Update(0.1);
 	mOrbit.Add(pokeball);
 	Invalidate();

@@ -29,7 +29,7 @@ public:
 
 	//void Draw(Gdiplus::Graphics *graphics) override;
 
-	void setspeed(double speedx, double speedy) { mSpeedX = speedx, mSpeedY = speedy; };
+	void SetSpeed(double speedx, double speedy) { mSpeedX = speedx, mSpeedY = speedy; };
 
 protected:
 
@@ -42,6 +42,8 @@ private:
 	///Linear movement speed in the Y direction.
 	double mSpeedY;
 
+	double mPosX = 0;
+	double mPosY = 0;
 
 
 };
