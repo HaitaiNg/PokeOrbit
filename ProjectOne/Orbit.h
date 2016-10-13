@@ -42,7 +42,7 @@ public:
 	/// Accepts a visitor for the collection
 	void Accept(CItemVisitor * visitor);
 
-	void Click(double x, double y);
+	void Click(float x, float y);
 
 	void SetXOffset(float width) { mXOffset = width; }
 	void SetYOffset(float height) { mYOffset = height; }

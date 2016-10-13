@@ -25,7 +25,7 @@ public:
 
 	virtual ~CLinearMovement();
 
-	void Update(double elapsed);
+	virtual void Update(double elapsed);
 
 	//void Draw(Gdiplus::Graphics *graphics) override;
 

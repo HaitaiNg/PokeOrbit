@@ -18,6 +18,7 @@ const wstring PokeBallImageName(L"images/pokeball.png");
 CPokeBall::CPokeBall(COrbit *orbit) :
 	CLinearMovement(orbit, PokeBallImageName)
 {
+
 	
 }
 
