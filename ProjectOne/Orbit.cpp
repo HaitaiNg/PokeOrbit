@@ -197,7 +197,7 @@ void COrbit::Click(float xclick, float yclick)
 	auto pokeball = make_shared<CPokeBall>(this);
 	
 	pokeball->SetSpeed(xclick, yclick);
-	pokeball->Update(0.1);
+	
 	this->Add(pokeball);
 
 }
