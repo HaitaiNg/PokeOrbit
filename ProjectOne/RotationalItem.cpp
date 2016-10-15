@@ -49,7 +49,6 @@ void CRotationalItem::Update(double elapsed)
 	y += mSpeedX * y * elapsed;
 
 	mAngle += 0.01;
-
 	SetLocation(x, y);
 
 }
