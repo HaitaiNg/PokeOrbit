@@ -1,30 +1,30 @@
 /**
-* \file Pokemon.h
-*
-* \author Haitai Ng
-*
-*
-*/
+ * \file Pokemon.h
+ *
+ * \author Haitai Ng 
+ *
+ *  
+ */
 
 #pragma once
 #include "Item.h"
 #include "RotationalItem.h"
 
 /**
-* Base class for a Pokemon
-* This applies to all of the Pokemon, but not the Pokestops
-* items in the orbit.
-*/
+ * Base class for a Pokemon 
+ * This applies to all of the Pokemon, but not the Pokestops
+ * items in the orbit. 
+ */
 class CPokemon :
 	public CRotationalItem
 {
 public:
 
 	/// Default constructor (disabled) 
-	CPokemon() = delete;
+	CPokemon() = delete; 
 
 	/// Copy Constructor (disabled) 
-	CPokemon(const CPokemon &) = delete;
+	CPokemon(const CPokemon &) = delete; 
 
 protected:
 	/// Constructor 
@@ -48,7 +48,7 @@ protected:
 	* \param visitor The visitor we accept */
 	virtual void Accept(CItemVisitor *visitor) override { visitor->VisitPokemon(this); }
 
-private:
+private: 
 	/// Pokemon speed in the X direction
 	double mSpeedX;
 
@@ -56,17 +56,18 @@ private:
 	double mSpeedY;
 
 	/// Object movement speed in the X direction 
-	double mObjectSpeedX;
+	double mObjectSpeedX; 
 
 	/// Object movement speed in the Y direction
-	double mObjectSpeedY;
+	double mObjectSpeedY; 
 
 	/// The elapsed time since construction
 	double mTime = 0;
 
 	/// Compute random range; 
-	double mRadius;
+	double mRadius; 
 
 	///Get the angle
-	double mAngle;
+	double mAngle; 
 };
+

@@ -61,6 +61,10 @@ private:
 
 	double mTimeToDrawPokemon; ///< Time to draw a pokemon
 
+	float mPointX; ///< x coordinate of click
+	float mPointY; ///< y coordinate of click
+
+	float mScale; ///< The scale gotten from COrbit
 public:
 	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
 	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
@@ -70,5 +74,6 @@ public:
 
 
 	void DisplayRotationalPokemon(double time);
+	
 };
 

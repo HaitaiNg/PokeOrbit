@@ -1,18 +1,18 @@
 /**
-* \file Pokemon.cpp
-*
-* \author Haitai Ng
-*/
+ * \file Pokemon.cpp
+ *
+ * \author Haitai Ng 
+ */
 
 #include "stdafx.h"
 #include "Pokemon.h"
 #include "RotationalItem.h"
 
 
-/// Maximum range up and down. This is 
-/// the maximum distance the fish will swim
-/// up and down in pixels
-const double MaxYRange = 500;
+ /// Maximum range up and down. This is 
+ /// the maximum distance the fish will swim
+ /// up and down in pixels
+const double MaxYRange = 500; 
 const double MaxXRange = 500;
 
 
@@ -28,8 +28,8 @@ CPokemon::CPokemon(COrbit *orbit, const std::wstring &filename) :
 }
 
 /**
-* Destructor
-*/
+ * Destructor 
+ */
 CPokemon::~CPokemon()
 {
 }
@@ -50,13 +50,13 @@ void CPokemon::Update(double elapsed)
 	double sn = sin(mAngle);
 	double cs = cos(mAngle);
 
-	double newX = cs * x + sn * y;
-	double newY = -sn * x + cs * y;
+	double newX = cs * x + sn * y; 
+	double newY = -sn * x + cs * y; 
 
-	x += mSpeedX * x * elapsed;
-	y += mSpeedX * y * elapsed;
+	x +=  mSpeedX * x * elapsed;
+	y +=  mSpeedX * y * elapsed;
 
-	mAngle += 0.01;
+	mAngle += 0.01; 
 
 	SetLocation(x, y);
 }
@@ -84,12 +84,12 @@ void CPokemon::SetSpeed(double minX, double maxX, double minY, double maxY)
 double CPokemon::SetRadius()
 {
 	mRadius = (rand() % 300) + 120;
-	return mRadius;
+	return mRadius; 
 }
 
 
 double CPokemon::SetAngle()
 {
 	mAngle = (rand() % 360);
-	return mAngle;
+	return mAngle; 
 }

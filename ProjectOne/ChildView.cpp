@@ -22,6 +22,7 @@
 #include "Pikachu.h"
 #include "Pokestop.h"
 #include "PokeBall.h"
+#include "PokestopVisitor.h"
 #include <algorithm>
 
 using namespace Gdiplus;
@@ -161,23 +162,30 @@ BOOL CChildView::OnEraseBkgnd(CDC* pDC)
 void CChildView::OnLButtonDown(UINT nFlags, CPoint point)
 {
 	// TODO: Add your message handler code here and/or call default
+	mScale = mOrbit.GetScale();
+	mPointX = (point.x - mOrbit.GetXOffset()) * (1 / mScale);
+	mPointY = (point.y - mOrbit.GetYOffset()) * (1 / mScale);
 
-	mGrabbedItem = mOrbit.HitTest(point.x, point.y);
+	mGrabbedItem = mOrbit.HitTest(mPointX, mPointY);
 	if (mGrabbedItem != nullptr)
 	{
 		// We grabbed something
 		// Move it to the front
 		mOrbit.MoveToFront(mGrabbedItem);
 		Invalidate();
+
+		// Create a visitor to change pokestop color to purple
+		CPokestopVisitor visitor;
+		mGrabbedItem->Accept(&visitor);
+
 	}
 
 	/// Draw Pokemon at random intervals ********************THIS NEEDS TO BE FIXED 
 	DisplayRotationalPokemon(10);
 
-	auto pokeball = make_shared<CPokeBall>(&mOrbit);
-	pokeball->Update(0.1);
-	mOrbit.Add(pokeball);
-	Invalidate();
+	mOrbit.Click(mPointX, mPointY);
+	
+
 
 }
 
@@ -243,10 +251,11 @@ void CChildView::DisplayRotationalPokemon(double time)
 		mOrbit.Add(charmeleon);
 		Invalidate();
 		
+		/**
 		auto pikachu = make_shared<CPikachu>(&mOrbit);
 		mOrbit.Add(pikachu);
 		Invalidate();
-	
+		*/ 
 		 
 	}
 

@@ -7,6 +7,8 @@
 #include "stdafx.h"
 #include "Orbit.h"
 #include "Blastoise.h"
+#include "PokeBall.h"
+#include "DoubleBufferDC.h"
 #include <cmath>
 
 using namespace std; 
@@ -70,7 +72,12 @@ void COrbit::OnDraw(Gdiplus::Graphics *graphics, int width, int height)
 	float xOffset = width / 2.0f;
 	float yOffset = height / 2.0f;
 
-	graphics->TranslateTransform(xOffset, yOffset);
+	SetXOffset(width / 2.0f);
+	SetYOffset(height / 2.0f);
+
+	SetScale(scale);
+
+	graphics->TranslateTransform(GetXOffset(), GetYOffset());
 	graphics->ScaleTransform(scale, scale);
 
 	// From here on you are drawing virtual pixels...
@@ -181,4 +188,16 @@ void COrbit::Accept(CItemVisitor *visitor)
 	{
 		item->Accept(visitor);
 	}
+}
+
+void COrbit::Click(float xclick, float yclick)
+{
+	
+
+	auto pokeball = make_shared<CPokeBall>(this);
+	
+	pokeball->SetSpeed(xclick, yclick);
+	pokeball->Update(0.1);
+	this->Add(pokeball);
+
 }

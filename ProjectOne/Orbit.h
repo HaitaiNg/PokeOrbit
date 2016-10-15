@@ -42,6 +42,15 @@ public:
 	/// Accepts a visitor for the collection
 	void Accept(CItemVisitor * visitor);
 
+	void Click(float x, float y);
+
+	void SetXOffset(float width) { mXOffset = width; }
+	void SetYOffset(float height) { mYOffset = height; }
+	float GetXOffset() { return mXOffset; }
+	float GetYOffset() { return mYOffset; }
+
+	void SetScale(float scale) { mScale = scale; }
+	float GetScale() { return mScale; }
 private:
 
 	/// Ash Ketchum image 
@@ -50,5 +59,10 @@ private:
 	/// All of the items to populate our orbit
 	std::vector<std::shared_ptr<CItem> > mItems;
 	float Radius = 500; 
+
+	float mXOffset;
+	float mYOffset;
+
+	float mScale;
 };
 

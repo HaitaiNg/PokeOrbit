@@ -47,6 +47,8 @@ public:
 	//! \param graphics Graphics device to draw on
 	virtual void Draw(Gdiplus::Graphics *graphics);
 
+	void SetImage(const std::wstring & file);
+
 	/** Test this item to see if it has been clicked on
 	* \param x X location on the aquarium to test
 	* \param y Y location on the aquarium to test
@@ -72,7 +74,6 @@ public:
 	/** Accept a visitor
 	* \param visitor The visitor we accept */
 	virtual void Accept(CItemVisitor *visitor) {};
-
 protected:
 	///Citem type
 	/// \param orbit, filename 
@@ -89,4 +90,8 @@ private:
 	/// The image of this Item
 	std::unique_ptr<Gdiplus::Bitmap> mItemImage;
 
+	/// The file for this item
+	std::wstring mFile;
+
+	
 };
