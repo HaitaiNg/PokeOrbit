@@ -25,8 +25,7 @@ public:
 	/// Destructor 
 	virtual ~CPokestop();
 
-	virtual void Update(double elapsed) override;
-
+	/// Load 
 	void Load(std::unique_ptr<Gdiplus::Bitmap>& image, std::wstring name);
 
 	/// Constructor disabled 
@@ -39,13 +38,10 @@ public:
 	* \param visitor The visitor we accept */
 	virtual void Accept(CItemVisitor *visitor) override { visitor->VisitPokestop(this); }
 
+	/** 
+	* Draw an object
+	*/
 	void Draw(Gdiplus::Graphics *graphics) override;
-
-	void SetSpeed(double minX, double maxX, double minY, double maxY);
-
-	double SetRadius();
-
-	double SetAngle();
 	
 	/** 
 	*	Set member variable mClicked to true
@@ -59,16 +55,5 @@ private:
 	/// Determines if pokestop has been clicked on
 	bool mClicked = false;
 
-	/// Pokemon speed in the X direction
-	double mSpeedX;
-
-	/// Pokemon speed in the Y direction
-	double mSpeedY;
-	
-	/// Compute random range; 
-	double mRadius;
-
-	///Get the angle
-	double mAngle;
 };
 
