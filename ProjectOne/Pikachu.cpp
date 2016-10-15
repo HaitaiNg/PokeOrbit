@@ -51,6 +51,7 @@ CPikachu::CPikachu(COrbit *orbit) :
 {
 	SetSpeed(MinSpeedX, MaxSpeedX, MinSpeedY, MaxSpeedY);
 	SetRadius();
+	SetAngle(); 
 }
 
 /**

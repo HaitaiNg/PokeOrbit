@@ -185,6 +185,7 @@
     <ClInclude Include="Charmeleon.h" />
     <ClInclude Include="ChildView.h" />
     <ClInclude Include="DoubleBufferDC.h" />
+    <ClInclude Include="Emitter.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemVisitor.h" />
     <ClInclude Include="LinearMovement.h" />
@@ -206,6 +207,7 @@
     <ClCompile Include="Blastoise.cpp" />
     <ClCompile Include="Charmeleon.cpp" />
     <ClCompile Include="ChildView.cpp" />
+    <ClCompile Include="Emitter.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="ItemVisitor.cpp" />
     <ClCompile Include="LinearMovement.cpp" />

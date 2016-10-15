@@ -251,11 +251,10 @@ void CChildView::DisplayRotationalPokemon(double time)
 		mOrbit.Add(charmeleon);
 		Invalidate();
 		
-		/**
 		auto pikachu = make_shared<CPikachu>(&mOrbit);
 		mOrbit.Add(pikachu);
 		Invalidate();
-		*/ 
+		 
 		 
 	}
 
