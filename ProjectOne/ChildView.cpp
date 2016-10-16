@@ -164,6 +164,8 @@ BOOL CChildView::OnEraseBkgnd(CDC* pDC)
 void CChildView::OnLButtonDown(UINT nFlags, CPoint point)
 {
 	// TODO: Add your message handler code here and/or call default
+
+	// Scale click to match items in window
 	mScale = mOrbit.GetScale();
 	mPointX = (point.x - mOrbit.GetXOffset()) * (1 / mScale);
 	mPointY = (point.y - mOrbit.GetYOffset()) * (1 / mScale);

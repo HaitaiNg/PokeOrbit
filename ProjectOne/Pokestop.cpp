@@ -80,3 +80,43 @@ void CPokestop::Draw(Gdiplus::Graphics * graphics)
 	}
 }
 
+/// Handle updates for animation
+/// \param elapsed The time since the last update
+void CPokestop::Update(double elapsed)
+{
+	CRotationalItem::Update(elapsed);
+
+	// Timer if pokestop is clicked on
+	if (mClicked)
+	{
+		LARGE_INTEGER frequency;
+		LARGE_INTEGER end;
+		double elapsedSeconds;
+		QueryPerformanceFrequency(&frequency);
+		
+
+		QueryPerformanceCounter(&end);
+		elapsedSeconds = (end.QuadPart - mStartTime) / (double)frequency.QuadPart;
+
+		if (elapsedSeconds > 15)
+		{
+			mClicked = false;
+		}
+	}
+}
+
+/**
+ * If pokestop is not in clicked state and is clicked on, change start and initialize timer
+ */
+void CPokestop::IsClicked()
+{
+	if (!mClicked)
+	{
+		mClicked = true;
+
+		LARGE_INTEGER start;
+		QueryPerformanceCounter(&start);
+		mStartTime = start.QuadPart;
+	}
+}
+
