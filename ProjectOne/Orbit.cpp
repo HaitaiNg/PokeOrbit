@@ -38,6 +38,12 @@ COrbit::COrbit()
 	{
 		AfxMessageBox(L"Failed to open images/ash.png");
 	}
+	mItemImage = unique_ptr<Gdiplus::Bitmap>(
+		Bitmap::FromFile(L"images/pokeball.png"));
+	if (mItemImage->GetLastStatus() != Ok)
+	{
+		AfxMessageBox(L"Failed to open images/ash.png");
+	}
 	mEmitter = std::make_shared<CEmitter>(this);
 }
 
@@ -112,10 +118,21 @@ void COrbit::OnDraw(Gdiplus::Graphics *graphics, int width, int height)
 */
 void COrbit::Draw(Gdiplus::Graphics *graphics)
 {
+	mPokeballOffset = 0;
 	//Iterate through collection and draw them. 
 	for (auto item : mItems) ///< auto figures out the type automatically( try to use auto as much as possible) 
 	{
 		item->Draw(graphics);
+	}
+	// Draw pokeballs on left side of screen
+	for (auto ball = 0; ball < mPokeballs; ball++)
+	{
+		double wid = mItemImage->GetWidth();
+		double hit = mItemImage->GetHeight();
+		graphics->DrawImage(mItemImage.get(),
+			float(-600), float(-500+ mPokeballOffset),
+			(float)mItemImage->GetWidth(), (float)mItemImage->GetHeight());
+		mPokeballOffset += 75;
 	}
 }
 
@@ -195,11 +212,15 @@ void COrbit::Accept(CItemVisitor *visitor)
 
 void COrbit::Click(float xclick, float yclick)
 {
-	auto pokeball = make_shared<CPokeBall>(this);
-	pokeball->SetSpeed(xclick, yclick);
-	if (sqrt(xclick * xclick + yclick * yclick) < 500)
+	if (mPokeballs > 0)
 	{
-		this->Add(pokeball);
+		auto pokeball = make_shared<CPokeBall>(this);
+		pokeball->SetSpeed(xclick, yclick);
+		if (sqrt(xclick * xclick + yclick * yclick) < 500)
+		{
+			this->Add(pokeball);
+			mPokeballs -= 1;
+		}
 	}
 }
 
