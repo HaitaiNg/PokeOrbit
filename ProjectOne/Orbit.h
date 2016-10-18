@@ -57,16 +57,20 @@ public:
 	/** See if the item needs to be destroyed */
 	bool Destroyed();
 
+	/** See if a pokemon has been caught */
+	std::shared_ptr<CItem> PokemonCaught(std::shared_ptr<CItem> item);
 
 
 private:
-
 	/// Ash Ketchum image 
 	std::unique_ptr<Gdiplus::Bitmap> mAshImage;
 	std::unique_ptr<Gdiplus::Bitmap> mItemImage;
 	/// All of the items to populate our orbit
 	std::vector<std::shared_ptr<CItem> > mItems;
 	float Radius = 500; 
+
+	//Pointer 
+	std::shared_ptr<CItem> mObject; 
 
 	float mXOffset;
 	float mYOffset;

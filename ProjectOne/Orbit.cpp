@@ -234,7 +234,11 @@ bool COrbit::Destroyed()
 {
 	for (auto other : mItems) ///< iterate through collection 
 	{
-		if (other->DestroyObject()) //< determine if the object needs to be destroyed 
+		/// Determine if a pokeball has hit a pokemon 
+		mObject = PokemonCaught(other);
+
+		/// If pokeball hits the green circle, destroy it 
+		if (other->DestroyObject()) //< determine if the object needs to be destroyed (Pokeball) 
 		{
 			auto loc = find(begin(mItems), end(mItems), other);
 			if (loc != end(mItems))
@@ -244,6 +248,52 @@ bool COrbit::Destroyed()
 			return true;
 		} 
 
+		/// If the pokeball hits a pokemon, then mObject will not equal nullptr 
+		if (mObject != nullptr)
+		{
+			/// Delete the pokemon from the mItems 
+			auto loc = find(begin(mItems), end(mItems), mObject);
+			if (loc != end(mItems))
+			{
+				mItems.erase(loc);
+			}
+			
+			/// Delete the pokeball from the mItems 
+			auto loc2 = find(begin(mItems), end(mItems), other);
+			if (loc2 != end(mItems))
+			{
+				mItems.erase(loc2);
+			}
+
+			return true; 
+		}
 	}
 	return false;
 }
+
+
+/**
+ * Determine if a pokemon has been caught. If a pokemon is hit, return a pointer to the pokemon, else return nullptr  
+ * \param item 
+ * \returns pointer 
+ */
+std::shared_ptr<CItem> COrbit::PokemonCaught(std::shared_ptr<CItem> item)
+{
+	for (auto other : mItems)
+	{
+		///Do not compare to ourselves 
+		if (other == item)
+		{
+			continue; 
+		}
+
+		if (other->IsPokeball() && 
+			other->HitTest((int)item->GetX(), (int)item->GetY()))
+		{
+			return other;
+		}
+	}
+
+	return nullptr; 
+}
+
