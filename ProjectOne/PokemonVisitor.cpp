@@ -31,10 +31,4 @@ CPokemonVisitor::~CPokemonVisitor()
  */
 void CPokemonVisitor::VisitPokemon(CPokemon *pokemon)
 {
-	///** Help: This is the code I would like to implement. However pokemon is being treated as an Item.  
-
-	///mRadius = pokemon->ReturnRadius(); 
-
-	/// I speculate that the reason this is not working is because the constructor for CPokemon accepts two parameters, as opposed to one
-
 }

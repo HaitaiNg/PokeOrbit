@@ -21,10 +21,10 @@ public:
 	/// Copy constructor (disabled)
 	CLinearMovement(const CLinearMovement &) = delete;
 
-	
-
+	/// Virtual Destructor 
 	virtual ~CLinearMovement();
 
+	/// Update the animation 
 	virtual void Update(double elapsed);
 
 	/// Destroy an object 
@@ -36,6 +36,7 @@ public:
 
 protected:
 
+	/// Constructor 
 	CLinearMovement(COrbit * orbit, const std::wstring & filename);
 
 private: 
@@ -45,10 +46,13 @@ private:
 	///Linear movement speed in the Y direction.
 	double mSpeedY;
 
+	/// Positon x 
 	double mPosX = 0;
+
+	/// Position y 
 	double mPosY = 0;
 
-
+	///maxium radius 
 	double mRadius; 
 
 };

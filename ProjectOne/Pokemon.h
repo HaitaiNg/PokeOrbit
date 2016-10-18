@@ -29,6 +29,10 @@ public:
 	/// Destructor 
 	virtual ~CPokemon();
 
+	/** Return true if an object is a pokemon
+	* \return True */
+	bool IsPokemon() { return true;  }
+
 protected:
 	/// Constructor 
 	CPokemon(COrbit * orbit, const std::wstring & filename);

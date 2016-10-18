@@ -25,7 +25,13 @@ public:
 	/// Copy constructor (disabled)
 	CPokeBall(const CPokeBall &) = delete;
 
-
+	/// Virtual destructor 
 	virtual ~CPokeBall();
+
+	/**
+	* Is this object a pokeball?
+	* \return bool. This is a pokeball
+	*/
+	bool IsPokeball() { return true; }
 };
 

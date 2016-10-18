@@ -49,6 +49,14 @@ public:
 	*	Set member variable mClicked to true
 	*/
 	void IsClicked();
+
+	/**
+	* Is this object a pokestop?
+	* \return bool. This is a pokestop 
+	*/
+	bool IsNotPokeStop() { return false; }
+
+
 private:
 
 	/// The image of the loaded rocket

@@ -47,6 +47,8 @@ public:
 	//! \param graphics Graphics device to draw on
 	virtual void Draw(Gdiplus::Graphics *graphics);
 
+	//! Set the image 
+	//! \param file 
 	void SetImage(const std::wstring & file);
 
 	/** Test this item to see if it has been clicked on
@@ -80,6 +82,24 @@ public:
 	* \returns bool. The default is false
 	*/
 	virtual bool DestroyObject() { return false; }
+
+	/**
+	* Is this object a pokeball?
+	* \return bool. The default is false
+	*/
+	virtual bool IsPokeball() { return false; }
+
+	/** 
+	* Is this object a pokemon?
+	* \return bool. The default is false 
+	*/
+	virtual bool IsPokemon() { return true; }
+
+	/**
+	* Is this object a pokestop?
+	* \return bool. The default is true
+	*/
+	virtual bool IsNotPokeStop() { return true; }
 
 protected:
 	///Citem type

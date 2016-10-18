@@ -39,10 +39,8 @@ void CLinearMovement::Update(double elapsed)
 	mPosX += mSpeedX * elapsed ;
 	mPosY += mSpeedY * elapsed ;
 
-
 	/// Check if the object needs to be destroyed 
 	DestroyObject();
-
 	SetLocation(mPosX, mPosY);
 }
 
@@ -59,8 +57,6 @@ bool CLinearMovement::DestroyObject()
 	/// Determine if the Pokeball is 500 pixels away from center
 	if ((abs(mRadius) >= 480))
 	{
-		mSpeedX = 0;
-		mSpeedY = 0;
 		return true; ///< If pokeball is to far, destroy it 
 	}
 
