@@ -64,7 +64,7 @@ public:
 private:
 	/// Ash Ketchum image 
 	std::unique_ptr<Gdiplus::Bitmap> mAshImage;
-
+	std::unique_ptr<Gdiplus::Bitmap> mItemImage;
 	/// All of the items to populate our orbit
 	std::vector<std::shared_ptr<CItem> > mItems;
 	float Radius = 500; 
@@ -78,5 +78,11 @@ private:
 	float mScale;
 
 	std::shared_ptr<CEmitter> mEmitter;
+
+	/// Number of pokeballs in inventory
+	int mPokeballs = 13;
+
+	/// Y Offset in pixels for each redraw of pokeball on left side of screen
+	int mPokeballOffset;
 };
 

@@ -119,4 +119,3 @@ void CPokestop::IsClicked()
 		mStartTime = start.QuadPart;
 	}
 }
-
