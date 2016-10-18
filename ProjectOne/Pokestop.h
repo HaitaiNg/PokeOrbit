@@ -54,7 +54,7 @@ public:
 	* Is this object a pokestop?
 	* \return bool. This is a pokestop 
 	*/
-	bool IsNotPokeStop() { return false; }
+	bool IsPokeStop() { return true; }
 
 
 private:

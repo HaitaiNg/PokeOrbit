@@ -93,13 +93,13 @@ public:
 	* Is this object a pokemon?
 	* \return bool. The default is false 
 	*/
-	virtual bool IsPokemon() { return true; }
+	virtual bool IsPokemon() { return false; }
 
 	/**
 	* Is this object a pokestop?
-	* \return bool. The default is true
+	* \return bool. The default is false
 	*/
-	virtual bool IsNotPokeStop() { return true; }
+	virtual bool IsPokeStop() { return false; }
 
 protected:
 	///Citem type

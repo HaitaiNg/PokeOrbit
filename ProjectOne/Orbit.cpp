@@ -253,8 +253,8 @@ bool COrbit::Destroyed()
 
 /**
  * Determine if a pokemon has been caught. If a pokemon is hit, return a pointer to the pokemon, else return nullptr  
- * \param item 
- * \returns pointer 
+ * \param item This is a pointer to pokemon
+ * \returns pointer This is a pointer to pokeball 
  */
 std::shared_ptr<CItem> COrbit::PokemonCaught(std::shared_ptr<CItem> item)
 {
@@ -266,11 +266,19 @@ std::shared_ptr<CItem> COrbit::PokemonCaught(std::shared_ptr<CItem> item)
 			continue; 
 		}
 
-		if (other->IsPokeball() && 
+		/// If one object is a pokeball, and the other item (pokemon) is on top then return the pointer for the pokeball
+		/// so it can be deleted in Destroyed() 
+		if (other->IsPokeball() && item->IsPokemon() &&
 			other->HitTest((int)item->GetX(), (int)item->GetY()))
 		{
 			return other;
 		}
+
+		/// Do not delete Pokestops when it is in contact with other objects 
+		//if (other->IsPokeStop() == true )
+		//{
+			//return nullptr;
+		//}
 	}
 
 	return nullptr; 

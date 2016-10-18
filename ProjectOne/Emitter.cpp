@@ -21,11 +21,19 @@ const int PokemonNumMin = 1;
 /// Maximum number of pokemon.
 const int PokemonNumMax = 4;
 
+
+/**
+ * Constructor 
+ * \param orbit 
+ */
 CEmitter::CEmitter(COrbit *orbit) : mOrbit(orbit)
 {
 }
 
 
+/**
+ * Destructor 
+ */
 CEmitter::~CEmitter()
 {
 }
