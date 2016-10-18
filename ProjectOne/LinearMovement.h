@@ -27,6 +27,9 @@ public:
 
 	virtual void Update(double elapsed);
 
+	/// Destroy an object 
+	bool DestroyObject();
+
 	//void Draw(Gdiplus::Graphics *graphics) override;
 
 	void SetSpeed(double speedx, double speedy) { mSpeedX = speedx, mSpeedY = speedy; };
@@ -45,6 +48,8 @@ private:
 	double mPosX = 0;
 	double mPosY = 0;
 
+
+	double mRadius; 
 
 };
 

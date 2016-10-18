@@ -202,3 +202,27 @@ void COrbit::Click(float xclick, float yclick)
 		this->Add(pokeball);
 	}
 }
+
+
+
+/**
+ * Destroy an object in the mItems 
+ * \returns bool 
+ */
+bool COrbit::Destroyed()
+{
+	for (auto other : mItems) ///< iterate through collection 
+	{
+		if (other->DestroyObject()) //< determine if the object needs to be destroyed 
+		{
+			auto loc = find(begin(mItems), end(mItems), other);
+			if (loc != end(mItems))
+			{
+				mItems.erase(loc);
+			}
+			return true;
+		} 
+
+	}
+	return false;
+}

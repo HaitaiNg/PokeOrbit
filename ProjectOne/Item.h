@@ -74,6 +74,13 @@ public:
 	/** Accept a visitor
 	* \param visitor The visitor we accept */
 	virtual void Accept(CItemVisitor *visitor) {};
+
+	/**
+	* Is this object ready to be destroyed?
+	* \returns bool. The default is false
+	*/
+	virtual bool DestroyObject() { return false; }
+
 protected:
 	///Citem type
 	/// \param orbit, filename 

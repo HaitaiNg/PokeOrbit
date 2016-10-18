@@ -53,6 +53,12 @@ public:
 
 	void SetScale(float scale) { mScale = scale; }
 	float GetScale() { return mScale; }
+
+	/** See if the item needs to be destroyed */
+	bool Destroyed(); 
+
+
+
 private:
 
 	/// Ash Ketchum image 

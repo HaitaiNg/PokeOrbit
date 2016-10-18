@@ -25,6 +25,7 @@ public:
 	/// Copy constructor (disabled)
 	CPokeBall(const CPokeBall &) = delete;
 
+
 	virtual ~CPokeBall();
 };
 

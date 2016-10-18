@@ -141,6 +141,10 @@ void CChildView::OnPaint()
 
 	/// Everytime we draw we determine how much time has elapsed since the last time we draw. 
 	mOrbit.Update(elapsed);
+
+	/// Determine if an item is destroyed in the orbit 
+	mOrbit.Destroyed(); 
+
 }
 
 
@@ -183,9 +187,6 @@ void CChildView::OnLButtonDown(UINT nFlags, CPoint point)
 		mGrabbedItem->Accept(&visitor);
 
 	}
-
-	/// Draw Pokemon at random intervals ********************THIS NEEDS TO BE FIXED 
-	//DisplayRotationalPokemon(10);
 
 	mOrbit.Click(mPointX, mPointY);
 	
