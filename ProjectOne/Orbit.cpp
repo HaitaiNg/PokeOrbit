@@ -9,7 +9,8 @@
 #include "Blastoise.h"
 #include "PokeBall.h"
 #include "DoubleBufferDC.h"
-#include <cmath>
+#include "Emitter.h"
+
 
 using namespace std; 
 using namespace Gdiplus;
@@ -37,6 +38,7 @@ COrbit::COrbit()
 	{
 		AfxMessageBox(L"Failed to open images/ash.png");
 	}
+	mEmitter = std::make_shared<CEmitter>(this);
 }
 
 
@@ -176,6 +178,7 @@ void COrbit::Update(double elapsed)
 	{
 		item->Update(elapsed);
 	}
+	mEmitter->Update(elapsed);
 }
 
 
@@ -192,12 +195,10 @@ void COrbit::Accept(CItemVisitor *visitor)
 
 void COrbit::Click(float xclick, float yclick)
 {
-	
-
 	auto pokeball = make_shared<CPokeBall>(this);
-	
 	pokeball->SetSpeed(xclick, yclick);
-	
-	this->Add(pokeball);
-
+	if (sqrt(xclick * xclick + yclick * yclick) < 500)
+	{
+		this->Add(pokeball);
+	}
 }

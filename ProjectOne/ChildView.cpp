@@ -50,7 +50,9 @@ const int FrameDuration = 30;
 */
 CChildView::CChildView()
 {
-	srand((unsigned int)time(nullptr)); //< random number generator 
+	//srand((unsigned int)time(nullptr)); //< random number generator 
+	
+	
 }
 
 /**
@@ -162,6 +164,8 @@ BOOL CChildView::OnEraseBkgnd(CDC* pDC)
 void CChildView::OnLButtonDown(UINT nFlags, CPoint point)
 {
 	// TODO: Add your message handler code here and/or call default
+
+	// Scale click to match items in window
 	mScale = mOrbit.GetScale();
 	mPointX = (point.x - mOrbit.GetXOffset()) * (1 / mScale);
 	mPointY = (point.y - mOrbit.GetYOffset()) * (1 / mScale);
@@ -181,7 +185,7 @@ void CChildView::OnLButtonDown(UINT nFlags, CPoint point)
 	}
 
 	/// Draw Pokemon at random intervals ********************THIS NEEDS TO BE FIXED 
-	DisplayRotationalPokemon(10);
+	//DisplayRotationalPokemon(10);
 
 	mOrbit.Click(mPointX, mPointY);
 	

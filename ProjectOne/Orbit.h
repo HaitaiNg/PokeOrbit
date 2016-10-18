@@ -10,6 +10,7 @@
 #include <memory>
 #include <vector> 
 #include "ItemVisitor.h"
+#include "Emitter.h"
 class CItem; 
 
 /**
@@ -19,6 +20,7 @@ class COrbit
 {
 public:
 	COrbit();
+	
 	virtual ~COrbit();
 
 	/// Draws the background and ash 
@@ -64,5 +66,7 @@ private:
 	float mYOffset;
 
 	float mScale;
+
+	std::shared_ptr<CEmitter> mEmitter;
 };
 

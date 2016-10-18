@@ -3,7 +3,7 @@
  *
  * \author Haitai Ng 
  *
- * 
+ * Class that represents a pokestop
  */
 
 #pragma once
@@ -12,7 +12,7 @@
 
 
 /**
- * 
+ * Pokestop class derived from rotational item class holds attributes of pokestop
  */
 class CPokestop :
 	public CRotationalItem
@@ -42,11 +42,13 @@ public:
 	* Draw an object
 	*/
 	void Draw(Gdiplus::Graphics *graphics) override;
+
+	void Update(double elapsed) override;
 	
 	/** 
 	*	Set member variable mClicked to true
 	*/
-	void IsClicked() { mClicked = true; }
+	void IsClicked();
 private:
 
 	/// The image of the loaded rocket
@@ -54,6 +56,9 @@ private:
 
 	/// Determines if pokestop has been clicked on
 	bool mClicked = false;
+
+	long long mTime;    ///< Last time we read the timer
+	long long mStartTime;    ///< Start time when pokestop is clicked
 
 };
 
