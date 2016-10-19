@@ -10,7 +10,7 @@
 #include "PokeBall.h"
 #include "DoubleBufferDC.h"
 #include "Emitter.h"
-
+#include "PokestopVisitor.h"
 
 using namespace std; 
 using namespace Gdiplus;
@@ -254,18 +254,52 @@ void COrbit::Accept(CItemVisitor *visitor)
 
 void COrbit::Click(float xclick, float yclick)
 {
+	int mPointX = (xclick - this->GetXOffset()) * (1 / mScale);
+	int mPointY = (yclick - this->GetYOffset()) * (1 / mScale);
+
 	if (mPokeballs > 0)
 	{
 		auto pokeball = make_shared<CPokeBall>(this);
-		pokeball->SetSpeed(xclick, yclick);
-		if (sqrt(xclick * xclick + yclick * yclick) < 500)
+		pokeball->SetSpeed(mPointX, mPointY);
+		if (sqrt(mPointX * mPointX + mPointY * mPointY) < Radius)
 		{
-			this->Add(pokeball);
-			mPokeballs -= 1;
+			auto item = this->HitTest(mPointX, mPointY);
+			if (item == nullptr)
+			{
+				this->Add(pokeball);
+				mPokeballs -= 1;
+			}
+			else
+				if (!item->IsPokeStop())
+				{
+					this->Add(pokeball);
+					mPokeballs -= 1;
+				}
+			
+				
 		}
 	}
+
+	auto GrabbedItem = this->HitTest(mPointX, mPointY);
+	if (GrabbedItem != nullptr)
+	{
+		// We grabbed something
+		// Move it to the front
+		this->MoveToFront(GrabbedItem);
+		
+
+		// Create a visitor to change pokestop color to purple
+		CPokestopVisitor visitor;
+		GrabbedItem->Accept(&visitor);
+
+	}
+	
 }
 
+bool COrbit::FirePokeball()
+{
+	return true;
+}
 
 
 /**

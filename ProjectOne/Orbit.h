@@ -60,6 +60,8 @@ public:
 	/** See if a pokemon has been caught */
 	std::shared_ptr<CItem> PokemonCaught(std::shared_ptr<CItem> item);
 
+	/** See if a pokeball can be fired */
+	bool FirePokeball();
 
 private:
 	/// Ash Ketchum image 
