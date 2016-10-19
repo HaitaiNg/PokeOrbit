@@ -45,6 +45,31 @@ COrbit::COrbit()
 		AfxMessageBox(L"Failed to open images/ash.png");
 	}
 	mEmitter = std::make_shared<CEmitter>(this);
+
+	/// Initialize blastoise image 
+	mBlastoiseImage = unique_ptr<Gdiplus::Bitmap>(
+		Bitmap::FromFile(L"images/blastoise.png"));
+	if (mItemImage->GetLastStatus() != Ok)
+	{
+		AfxMessageBox(L"Failed to open images/blastoise.png");
+	}
+
+	/// Initialize charmeleon image 
+	mCharmeleonImage = unique_ptr<Gdiplus::Bitmap>(
+		Bitmap::FromFile(L"images/charmeleon.png"));
+	if (mItemImage->GetLastStatus() != Ok)
+	{
+		AfxMessageBox(L"Failed to open images/charmeleon.png");
+	}
+
+	/// Initialize pikachu image 
+	mPikachuImage = unique_ptr<Gdiplus::Bitmap>(
+		Bitmap::FromFile(L"images/pikachu.png"));
+	if (mItemImage->GetLastStatus() != Ok)
+	{
+		AfxMessageBox(L"Failed to open images/pikachu.png");
+	}
+
 }
 
 
@@ -124,6 +149,7 @@ void COrbit::Draw(Gdiplus::Graphics *graphics)
 	{
 		item->Draw(graphics);
 	}
+
 	// Draw pokeballs on left side of screen
 	for (auto ball = 0; ball < mPokeballs; ball++)
 	{
@@ -133,6 +159,22 @@ void COrbit::Draw(Gdiplus::Graphics *graphics)
 			float(-600), float(-500+ mPokeballOffset),
 			(float)mItemImage->GetWidth(), (float)mItemImage->GetHeight());
 		mPokeballOffset += 75;
+	}
+
+
+	/// Draw pokemon when they are caught 
+	if (mPokemonCaught > 0)
+	{
+		/// these are the general coordinates of where we want to draw the image. 
+		graphics->DrawImage(mBlastoiseImage.get(), float(500), float(-275), (float)mBlastoiseImage->GetWidth(), (float)mBlastoiseImage->GetHeight());
+
+		/// these are the general coordinates of where we want to draw the image. 
+		graphics->DrawImage(mCharmeleonImage.get(), float(500), float(-400), (float)mCharmeleonImage->GetWidth(), (float)mCharmeleonImage->GetHeight());
+
+		/// these are the general coordinates of where we want to draw the image. 
+		graphics->DrawImage(mPikachuImage.get(), float(500), float(-500), (float)mPikachuImage->GetWidth(), (float)mPikachuImage->GetHeight());
+
+
 	}
 }
 
@@ -251,6 +293,7 @@ bool COrbit::Destroyed()
 		/// If the pokeball hits a pokemon, then mObject will not equal nullptr 
 		if (mObject != nullptr)
 		{
+
 			/// Delete the pokemon from the mItems 
 			auto loc = find(begin(mItems), end(mItems), mObject);
 			if (loc != end(mItems))
@@ -292,6 +335,7 @@ std::shared_ptr<CItem> COrbit::PokemonCaught(std::shared_ptr<CItem> item)
 		if (other->IsPokeball() && item->IsPokemon() &&
 			other->HitTest((int)item->GetX(), (int)item->GetY()))
 		{
+			mPokemonCaught += 1; 
 			return other;
 		}
 

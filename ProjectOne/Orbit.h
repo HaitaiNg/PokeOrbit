@@ -64,12 +64,23 @@ public:
 private:
 	/// Ash Ketchum image 
 	std::unique_ptr<Gdiplus::Bitmap> mAshImage;
+
+	/// Pokeball Image 
 	std::unique_ptr<Gdiplus::Bitmap> mItemImage;
+
+	/// Blastoise Image 
+	std::unique_ptr<Gdiplus::Bitmap> mBlastoiseImage; 
+	/// Charmeleon Image 
+	std::unique_ptr<Gdiplus::Bitmap> mCharmeleonImage; 
+	/// PikachuImage 
+	std::unique_ptr<Gdiplus::Bitmap> mPikachuImage; 
+
+
 	/// All of the items to populate our orbit
 	std::vector<std::shared_ptr<CItem> > mItems;
 	float Radius = 500; 
 
-	//Pointer 
+	//Pointer to object that will be destroyed 
 	std::shared_ptr<CItem> mObject; 
 
 	float mXOffset;
@@ -84,5 +95,8 @@ private:
 
 	/// Y Offset in pixels for each redraw of pokeball on left side of screen
 	int mPokeballOffset;
+
+	/// Number of pokemon caught 
+	double mPokemonCaught = 0 ;
 };
 

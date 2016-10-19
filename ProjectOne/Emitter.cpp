@@ -7,14 +7,14 @@
 #include "Pokestop.h"
 #include "Pikachu.h"
 /// Minimum time to generate a pokemon.
-const double PokemonTimeMin = 1;
+const double PokemonTimeMin = 5;
 /// Maximum time to generate a pokemon.
 const double PokemonTimeMax = 5;
 
 /// Minimum time to generate a pokestop.
-const double PokestopTimeMin = 3;
+const double PokestopTimeMin = 5;
 /// Maximum time to generate a pokestop.
-const double PokestopTimeMax = 10;
+const double PokestopTimeMax = 5;
 
 /// Minimum number of pokemon.
 const int PokemonNumMin = 1;
