@@ -35,7 +35,7 @@ const double MinSpeedY = 0.02;
  * \param aquarium The aquarium this is a member of
  */
 CBlastoise::CBlastoise(COrbit *orbit) :
-	CPokemon(orbit, BlastoiseImageName)
+	CPokemon(orbit, BlastoiseImageName, Blastoise)
 {
 	SetSpeed(MinSpeedX, MaxSpeedX, MinSpeedY, MaxSpeedY);
 	SetRadius();

@@ -23,13 +23,24 @@ public:
 	virtual ~CPokemonVisitor();
 
 	/// visit pokemon
-	void VisitPokemon(CPokemon *pokemon);
+	void VisitPokemon(CPokemon *pokemon) override;
 
-	/// return the radius (this will be used in childview when setting the initial location of the pokemon) 
+	/** Have any blastoise been caught? 
+	* \return double  */
 	double GetBlastoiseCount() { return mBlastoiseCaught; }
 
+	/** Have any charmeleon been caught?
+	* \return double  */
+	double GetCharmeleonCount() { return mCharmeleonCaught; }
+
+	/** Have any Pikachu been caught?
+	* \return double  */
+	double GetPikachuCount() { return mPikachuCaught; }
+
 private: 
-	double mRadius; ///< when a pokemon is created, make sure the distance is correct from the center 
-	double mBlastoiseCaught; 
+
+	double mBlastoiseCaught; ///< number of blastoise that have been caught 
+	double mCharmeleonCaught; ///< number of charmeleon that have been caught 
+	double mPikachuCaught; ///< number of pikachu that have been caught 
 };
 

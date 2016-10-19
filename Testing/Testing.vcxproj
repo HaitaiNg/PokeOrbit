@@ -63,7 +63,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>StdAfx;Orbit;Item;Blastoise;Pokemon;RotationalItem;Pokestop;PokeBall;LinearMovement;Emitter;Pikachu;Charmeleon;PokestopVisitor;ItemVisitor;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>StdAfx;Orbit;Item;Blastoise;Pokemon;RotationalItem;Pokestop;PokeBall;LinearMovement;Emitter;Pikachu;Charmeleon;ItemVisitor;PokestopVisitor;PokemonVisitor;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

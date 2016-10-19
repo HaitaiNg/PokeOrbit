@@ -47,7 +47,7 @@ double PikachuRadius = 500;
 * \param aquarium The aquarium this is a member of
 */
 CPikachu::CPikachu(COrbit *orbit) :
-	CPokemon(orbit, PikachuImageName)
+	CPokemon(orbit, PikachuImageName, Pikachu)
 {
 	SetSpeed(MinSpeedX, MaxSpeedX, MinSpeedY, MaxSpeedY);
 	SetRadius();

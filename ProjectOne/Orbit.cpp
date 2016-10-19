@@ -11,6 +11,7 @@
 #include "DoubleBufferDC.h"
 #include "Emitter.h"
 #include "PokestopVisitor.h"
+#include "PokemonVisitor.h"
 
 using namespace std; 
 using namespace Gdiplus;
@@ -168,7 +169,7 @@ void COrbit::Draw(Gdiplus::Graphics *graphics)
 
 
 	/// Draw pokemon when they are caught 
-	if (mPokemonCaught > 0)
+	if (mBlastoise > 0)
 	{
 
 		/// these are the general coordinates of where we want to draw the image. 
@@ -181,12 +182,15 @@ void COrbit::Draw(Gdiplus::Graphics *graphics)
 			&font,      // The font to use
 			PointF(625, -225),   // Where to draw (top left corner)
 			&BlastoiseBrush);    // The brush to draw the text with
+	}
+
+	if (mCharmeleon > 0)
+	{
 
 		/// these are the general coordinates of where we want to draw the image. 
 		graphics->DrawImage(mCharmeleonImage.get(), float(500), float(-400), (float)mCharmeleonImage->GetWidth(), (float)mCharmeleonImage->GetHeight());
 
-		
-		
+
 		/// Charmeleon Brush 
 		SolidBrush CharmeleonBrush(Color(255, 255, 255));
 		graphics->DrawString(L"0",  // String to draw
@@ -194,7 +198,10 @@ void COrbit::Draw(Gdiplus::Graphics *graphics)
 			&font,      // The font to use
 			PointF(625, -350),   // Where to draw (top left corner)
 			&CharmeleonBrush);    // The brush to draw the text with
+	}
 
+	if (mPikachu > 0)
+	{
 
 		/// these are the general coordinates of where we want to draw the image. 
 		graphics->DrawImage(mPikachuImage.get(), float(500), float(-500), (float)mPikachuImage->GetWidth(), (float)mPikachuImage->GetHeight());
@@ -405,7 +412,8 @@ std::shared_ptr<CItem> COrbit::PokemonCaught(std::shared_ptr<CItem> item)
 		if (other->IsPokeball() && item->IsPokemon() &&
 			other->HitTest((int)item->GetX(), (int)item->GetY()))
 		{
-			mPokemonCaught += 1; ///< A pokemon has been caught! 
+		//	mPokemonCaught += 1; ///< A pokemon has been caught! 
+			DeterminePokemonCount(item); 
 			return other;
 		}
 
@@ -415,7 +423,21 @@ std::shared_ptr<CItem> COrbit::PokemonCaught(std::shared_ptr<CItem> item)
 			//return nullptr;
 		//}
 	}
-
 	return nullptr; 
 }
 
+
+/**
+ * Determine what pokemon has been caught 
+ * \param item (Pokemon) 
+ * \returns number of pokemon caught 
+ */
+void COrbit::DeterminePokemonCount(std::shared_ptr<CItem> item)
+{
+	CPokemonVisitor visitor; 
+	item->Accept(&visitor); 
+	mBlastoise += visitor.GetBlastoiseCount(); 
+	mCharmeleon += visitor.GetCharmeleonCount(); 
+	mPikachu += visitor.GetPikachuCount(); 
+	 
+}

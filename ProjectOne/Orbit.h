@@ -61,6 +61,9 @@ public:
 	/** See if a pokemon has been caught */
 	std::shared_ptr<CItem> PokemonCaught(std::shared_ptr<CItem> item);
 
+	/// Determine which Pokemon got caught
+	void DeterminePokemonCount(std::shared_ptr<CItem> item);
+
 private:
 	/// Ash Ketchum image 
 	std::unique_ptr<Gdiplus::Bitmap> mAshImage;
@@ -96,7 +99,14 @@ private:
 	/// Y Offset in pixels for each redraw of pokeball on left side of screen
 	int mPokeballOffset;
 
-	/// Number of pokemon caught 
-	double mPokemonCaught = 0 ;
+	/// Number of blastoise
+	double mBlastoise = 0 ;
+
+	/// Number of charmelon 
+	double mCharmeleon = 0; 
+
+	/// Number of pikachu 
+	double mPikachu = 0; 
+
 };
 

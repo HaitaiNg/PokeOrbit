@@ -31,4 +31,9 @@ CPokemonVisitor::~CPokemonVisitor()
  */
 void CPokemonVisitor::VisitPokemon(CPokemon *pokemon)
 {
+	mBlastoiseCaught = pokemon->ReturnBlastoiseCount(); 
+	mCharmeleonCaught = pokemon->ReturnCharmeleonCount();
+	mPikachuCaught = pokemon->ReturnPikachuCount(); 
+
 }
+

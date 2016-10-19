@@ -34,7 +34,7 @@ const double MinSpeedY = 0.04;
 * \param aquarium The aquarium this is a member of
 */
 CCharmeleon::CCharmeleon(COrbit *orbit) :
-	CPokemon(orbit, CharmeleonImageName)
+	CPokemon(orbit, CharmeleonImageName, Charmeleon)
 {
 	SetSpeed(MinSpeedX, MaxSpeedX, MinSpeedY, MaxSpeedY);
 	SetRadius();
