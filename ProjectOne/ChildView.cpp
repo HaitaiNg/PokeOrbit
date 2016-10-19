@@ -169,31 +169,7 @@ BOOL CChildView::OnEraseBkgnd(CDC* pDC)
 */
 void CChildView::OnLButtonDown(UINT nFlags, CPoint point)
 {
-	// TODO: Add your message handler code here and/or call default
-
-	// Scale click to match items in window
-	mScale = mOrbit.GetScale();
-	mPointX = (point.x - mOrbit.GetXOffset()) * (1 / mScale);
-	mPointY = (point.y - mOrbit.GetYOffset()) * (1 / mScale);
-
-	mGrabbedItem = mOrbit.HitTest(mPointX, mPointY);
-	if (mGrabbedItem != nullptr)
-	{
-		// We grabbed something
-		// Move it to the front
-		mOrbit.MoveToFront(mGrabbedItem);
-		Invalidate();
-
-		// Create a visitor to change pokestop color to purple
-		CPokestopVisitor visitor;
-		mGrabbedItem->Accept(&visitor);
-
-	}
-
-	mOrbit.Click(mPointX, mPointY);
-	
-
-
+	mOrbit.Click(point.x, point.y);
 }
 
 /**

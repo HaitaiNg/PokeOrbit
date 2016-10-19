@@ -101,6 +101,11 @@ public:
 	*/
 	virtual bool IsPokeStop() { return false; }
 
+	/**
+	 * Check the state of an item
+	 * \ return bool, default is false.
+	 */
+	virtual bool State() { return false; };
 protected:
 	///Citem type
 	/// \param orbit, filename 
