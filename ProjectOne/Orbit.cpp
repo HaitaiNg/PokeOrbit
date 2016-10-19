@@ -251,9 +251,12 @@ void COrbit::Accept(CItemVisitor *visitor)
 		item->Accept(visitor);
 	}
 }
-
+/** Handle the adding pokeball and changing the pokestop color.
+ *	\param xclick and yclick the location when clicking.
+ */
 void COrbit::Click(float xclick, float yclick)
 {
+	/// Adjust the x,y location base on the click point.
 	int mPointX = (xclick - this->GetXOffset()) * (1 / mScale);
 	int mPointY = (yclick - this->GetYOffset()) * (1 / mScale);
 
@@ -275,8 +278,14 @@ void COrbit::Click(float xclick, float yclick)
 					this->Add(pokeball);
 					mPokeballs -= 1;
 				}
-			
-				
+				else
+				{
+					if (item->State())
+					{
+						this->Add(pokeball);
+						mPokeballs -= 1;
+					}
+				}
 		}
 	}
 
@@ -295,12 +304,6 @@ void COrbit::Click(float xclick, float yclick)
 	}
 	
 }
-
-bool COrbit::FirePokeball()
-{
-	return true;
-}
-
 
 /**
  * Destroy an object in the mItems 

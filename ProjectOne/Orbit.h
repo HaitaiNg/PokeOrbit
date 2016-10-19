@@ -44,6 +44,7 @@ public:
 	/// Accepts a visitor for the collection
 	void Accept(CItemVisitor * visitor);
 
+	/** Add the pokeball and change the pokestop color when clicking*/
 	void Click(float x, float y);
 
 	void SetXOffset(float width) { mXOffset = width; }
@@ -59,9 +60,6 @@ public:
 
 	/** See if a pokemon has been caught */
 	std::shared_ptr<CItem> PokemonCaught(std::shared_ptr<CItem> item);
-
-	/** See if a pokeball can be fired */
-	bool FirePokeball();
 
 private:
 	/// Ash Ketchum image 

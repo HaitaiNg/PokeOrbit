@@ -56,6 +56,11 @@ public:
 	*/
 	bool IsPokeStop() { return true; }
 
+	/**
+	* Is the pokestop clicked?
+	* \return bool. This is a pokestop
+	*/
+	virtual bool State() { return mClicked; };
 
 private:
 
