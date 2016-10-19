@@ -139,6 +139,7 @@ void CChildView::OnPaint()
 	double elapsed = double(diff) / mTimeFreq;
 	mLastTime = time.QuadPart;
 
+
 	/// Everytime we draw we determine how much time has elapsed since the last time we draw. 
 	mOrbit.Update(elapsed);
 

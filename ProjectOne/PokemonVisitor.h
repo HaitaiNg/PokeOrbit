@@ -26,9 +26,10 @@ public:
 	void VisitPokemon(CPokemon *pokemon);
 
 	/// return the radius (this will be used in childview when setting the initial location of the pokemon) 
-	double GetRadius() { return mRadius; }
+	double GetBlastoiseCount() { return mBlastoiseCaught; }
 
 private: 
 	double mRadius; ///< when a pokemon is created, make sure the distance is correct from the center 
+	double mBlastoiseCaught; 
 };
 

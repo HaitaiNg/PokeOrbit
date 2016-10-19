@@ -162,17 +162,50 @@ void COrbit::Draw(Gdiplus::Graphics *graphics)
 	}
 
 
+	FontFamily fontFamily(L"Arial");
+	Gdiplus::Font font(&fontFamily, 16);
+
+
+
 	/// Draw pokemon when they are caught 
 	if (mPokemonCaught > 0)
 	{
+
 		/// these are the general coordinates of where we want to draw the image. 
 		graphics->DrawImage(mBlastoiseImage.get(), float(500), float(-275), (float)mBlastoiseImage->GetWidth(), (float)mBlastoiseImage->GetHeight());
+
+		/// Blastoise Brush 
+		SolidBrush BlastoiseBrush(Color(255, 255, 255));
+		graphics->DrawString(L"0",  // String to draw
+			-1,         // String length, -1 means it figures it out on its own
+			&font,      // The font to use
+			PointF(625, -225),   // Where to draw (top left corner)
+			&BlastoiseBrush);    // The brush to draw the text with
 
 		/// these are the general coordinates of where we want to draw the image. 
 		graphics->DrawImage(mCharmeleonImage.get(), float(500), float(-400), (float)mCharmeleonImage->GetWidth(), (float)mCharmeleonImage->GetHeight());
 
+		
+		
+		/// Charmeleon Brush 
+		SolidBrush CharmeleonBrush(Color(255, 255, 255));
+		graphics->DrawString(L"0",  // String to draw
+			-1,         // String length, -1 means it figures it out on its own
+			&font,      // The font to use
+			PointF(625, -350),   // Where to draw (top left corner)
+			&CharmeleonBrush);    // The brush to draw the text with
+
+
 		/// these are the general coordinates of where we want to draw the image. 
 		graphics->DrawImage(mPikachuImage.get(), float(500), float(-500), (float)mPikachuImage->GetWidth(), (float)mPikachuImage->GetHeight());
+
+		/// Pikachu Brush 
+		SolidBrush PikachuBrush(Color(255, 255, 255));
+		graphics->DrawString(L"0",  // String to draw
+			-1,         // String length, -1 means it figures it out on its own
+			&font,      // The font to use
+			PointF(625, -450),   // Where to draw (top left corner)
+			&PikachuBrush);    // The brush to draw the text with
 
 
 	}
@@ -335,7 +368,7 @@ std::shared_ptr<CItem> COrbit::PokemonCaught(std::shared_ptr<CItem> item)
 		if (other->IsPokeball() && item->IsPokemon() &&
 			other->HitTest((int)item->GetX(), (int)item->GetY()))
 		{
-			mPokemonCaught += 1; 
+			mPokemonCaught += 1; ///< A pokemon has been caught! 
 			return other;
 		}
 
