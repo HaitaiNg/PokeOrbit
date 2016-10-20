@@ -300,10 +300,10 @@ void COrbit::Click(float xclick, float yclick)
 	int mPointX = (xclick - this->GetXOffset()) * (1 / mScale);
 	int mPointY = (yclick - this->GetYOffset()) * (1 / mScale);
 
+	auto pokeball = make_shared<CPokeBall>(this);
+	pokeball->SetSpeed(mPointX, mPointY);
 	if (mPokeballs > 0)
 	{
-		auto pokeball = make_shared<CPokeBall>(this);
-		pokeball->SetSpeed(mPointX, mPointY);
 		if (sqrt(mPointX * mPointX + mPointY * mPointY) < Radius)
 		{
 			auto item = this->HitTest(mPointX, mPointY);
@@ -325,9 +325,11 @@ void COrbit::Click(float xclick, float yclick)
 						this->Add(pokeball);
 						mPokeballs -= 1;
 					}
+					
 				}
 		}
 	}
+	
 
 	auto GrabbedItem = this->HitTest(mPointX, mPointY);
 	if (GrabbedItem != nullptr)
@@ -340,6 +342,7 @@ void COrbit::Click(float xclick, float yclick)
 		// Create a visitor to change pokestop color to purple
 		CPokestopVisitor visitor;
 		GrabbedItem->Accept(&visitor);
+		
 
 	}
 	
