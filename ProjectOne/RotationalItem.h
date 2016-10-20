@@ -13,8 +13,11 @@ class CRotationalItem :
 	public CItem
 {
 public:
+
+	/// Default constructor disabled 
 	CRotationalItem() = delete;
 
+	/// Virtual destructor 
 	virtual ~CRotationalItem();
 
 	/// Copy constructor (disabled) 
@@ -31,6 +34,7 @@ public:
 
 	/// Return the radius so that all pokemon are properly centered around ash 
 	virtual double SetRadius();
+
 	/// Return the angle 
 	virtual double SetAngle();
 
