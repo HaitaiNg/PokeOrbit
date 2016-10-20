@@ -74,5 +74,6 @@ private:
 	long long mTime;    ///< Last time we read the timer
 	long long mStartTime;    ///< Start time when pokestop is clicked
 
+	long mLife; ///< time before pokestop disappears 
 };
 

@@ -3,7 +3,7 @@
  *
  * \author Haitai Ng 
  *
- *  Base class for any item in our aquarium 
+ *  Base class for any item in our orbit 
  */
 
 
@@ -106,6 +106,7 @@ public:
 	 * \ return bool, default is false.
 	 */
 	virtual bool State() { return false; };
+
 protected:
 	///Citem type
 	/// \param orbit, filename 
