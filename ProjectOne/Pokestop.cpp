@@ -67,7 +67,8 @@ void CPokestop::Load(std::unique_ptr<Gdiplus::Bitmap> &image, std::wstring name)
  */
 void CPokestop::Draw(Gdiplus::Graphics * graphics)
 {
-	CItem::Draw(graphics);
+
+	
 
 	if (mClicked)
 	{
@@ -78,6 +79,11 @@ void CPokestop::Draw(Gdiplus::Graphics * graphics)
 			(int)(GetX() - wid / 2), (int)(GetY() - hit / 2),
 			wid, hit);
 	}
+	else 
+	{
+		CItem::Draw(graphics);
+	}
+	
 }
 
 /// Handle updates for animation
@@ -102,6 +108,7 @@ void CPokestop::Update(double elapsed)
 		{
 			mClicked = false;
 		}
+
 	}
 }
 
@@ -113,7 +120,7 @@ void CPokestop::IsClicked()
 	if (!mClicked)
 	{
 		mClicked = true;
-
+		
 		LARGE_INTEGER start;
 		QueryPerformanceCounter(&start);
 		mStartTime = start.QuadPart;
