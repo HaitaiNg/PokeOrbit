@@ -94,7 +94,10 @@ public:
 	*/
 	void DeterminePokemonCount(std::shared_ptr<CItem> item);
 
-
+	/* Add pokeballs
+	* \param num
+	*/
+	void AddPokeball(int num);
 	
 
 private:
