@@ -14,7 +14,6 @@ using namespace Gdiplus;
  /// Fish filename 
 const wstring BlastoiseImageName(L"images/blastoise.png");
 
-
 //! Maximum speed in the X direction in
 //! in pixels per second
 const double MaxSpeedX = 0.02;

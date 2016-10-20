@@ -3,7 +3,7 @@
  *
  * \author Haitai Ng 
  *
- *  
+ *  Base class for all of our Pokemon. 
  */
 
 #pragma once

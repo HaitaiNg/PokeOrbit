@@ -3,7 +3,7 @@
  *
  * \author Haitai Ng 
  *
- * 
+ *  Visitor class that is used to visit all the Pokemon in our orbit. 
  */
 
 #pragma once

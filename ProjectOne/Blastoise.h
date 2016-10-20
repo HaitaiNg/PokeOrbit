@@ -17,6 +17,7 @@
 class CBlastoise : public CPokemon
 {
 public:
+
 	///Constructor 
 	CBlastoise(COrbit *orbit); 
 

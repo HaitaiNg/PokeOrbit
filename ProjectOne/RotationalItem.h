@@ -3,18 +3,25 @@
  *
  * \author Haitai Ng 
  *
- * 
+ *  Base class for all items that move in a circle around Ash 
  */
 
 #pragma once
 #include "Item.h"
 
+
+/**
+ * Base class for all our items that rotate in around ash (Pokemon, Pokestops) 
+ */
 class CRotationalItem :
 	public CItem
 {
 public:
+
+	/// Default constructor disabled 
 	CRotationalItem() = delete;
 
+	/// Virtual destructor 
 	virtual ~CRotationalItem();
 
 	/// Copy constructor (disabled) 
@@ -31,6 +38,7 @@ public:
 
 	/// Return the radius so that all pokemon are properly centered around ash 
 	virtual double SetRadius();
+
 	/// Return the angle 
 	virtual double SetAngle();
 

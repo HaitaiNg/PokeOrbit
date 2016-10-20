@@ -32,6 +32,7 @@ public:
 
 	//void Draw(Gdiplus::Graphics *graphics) override;
 
+	/// Set the speed of an object 
 	void SetSpeed(double speedx, double speedy) { mSpeedX = speedx, mSpeedY = speedy; };
 
 protected:

@@ -17,12 +17,16 @@ class CEmitter
 {
 public:
 
+	///Constructor 
 	CEmitter(COrbit *orbit);
+
 	/// Delete defaut constructor
 	CEmitter() = delete;
 	
+	/// Virtal destructor 
 	virtual ~CEmitter();
 	
+	/// Update the animation 
 	void Update(double elapsed);
 
 private:
@@ -38,7 +42,10 @@ private:
 	/// How many pokemon can be generated once
 	int mPokemonNum;
 
+	/// Create Pokemon 
 	void EmitPokemon();
+
+	/// Create Pokestop 
 	void EmitPokestop();
 
 	//CEmitter mEmitter; 

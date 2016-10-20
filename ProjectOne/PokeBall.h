@@ -11,12 +11,14 @@
 #include "Item.h"
 
 /**
- * implement a pokeball
+ * Implement a pokeball
  */
 class CPokeBall :
 	public CLinearMovement
 {
 public:
+
+	/// Constructor
 	CPokeBall(COrbit * orbit);
 
 	/// Default constructor (disabled)

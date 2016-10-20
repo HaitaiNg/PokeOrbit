@@ -16,11 +16,25 @@ class CPokestopVisitor :
 	public CItemVisitor
 {
 public:
+
+	/// Constructor 
 	CPokestopVisitor();
+
+	/// Destructor 
 	virtual ~CPokestopVisitor();
 
 	/** Visit a CPokestop object
 	* \param pokestop Pokestop we are visiting */
 	virtual void VisitPokestop(CPokestop *pokestop) override;
+
+	/** Return the state of the Pokestop 
+	* \ return bool 
+	*/
+	bool ReturnPokestopLife() { return mPokestopLife; }
+
+private:
+
+	/// Destroy pokestop?
+	bool mPokestopLife; 
 };
 
