@@ -94,22 +94,26 @@ void CPokestop::Update(double elapsed)
 	CRotationalItem::Update(elapsed);
 
 	// Timer if pokestop is clicked on
+	LARGE_INTEGER frequency;
+	LARGE_INTEGER end;
+	double elapsedSeconds;
+	QueryPerformanceFrequency(&frequency);
+	mLife += elapsed;
+
+	QueryPerformanceCounter(&end);
+	elapsedSeconds = (end.QuadPart - mStartTime) / (double)frequency.QuadPart;
+	
 	if (mClicked)
 	{
-		LARGE_INTEGER frequency;
-		LARGE_INTEGER end;
-		double elapsedSeconds;
-		QueryPerformanceFrequency(&frequency);
-		
-
-		QueryPerformanceCounter(&end);
-		elapsedSeconds = (end.QuadPart - mStartTime) / (double)frequency.QuadPart;
-
 		if (elapsedSeconds > 15)
 		{
 			mClicked = false;
 		}
-
+	}
+	else
+	{
+		if (mLife >= 60)
+			mNotActive = true;
 	}
 }
 

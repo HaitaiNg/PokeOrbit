@@ -107,6 +107,7 @@ public:
 	 */
 	virtual bool State() { return false; };
 
+	virtual bool NotActive() { return false; };
 protected:
 	///Citem type
 	/// \param orbit, filename 

@@ -35,6 +35,8 @@ public:
 	/// Add an item to our collection 
 	void Add(std::shared_ptr<CItem> item);
 
+	void Delete(std::shared_ptr<CItem> item);
+
 	/// Hit test on the orbit itself
 	std::shared_ptr<CItem> HitTest(int x, int y);
 

@@ -242,6 +242,14 @@ void COrbit::Add(std::shared_ptr<CItem> item)
 	mItems.push_back(item);
 }
 
+void COrbit::Delete(std::shared_ptr<CItem> item)
+{
+	for (auto item : mItems)
+	{
+		auto loc = find(begin(mItems), end(mItems), item);
+		mItems.erase(loc);
+	}
+}
 
 
 /** Test an x,y click location to see if it clicked
@@ -367,6 +375,10 @@ void COrbit::Click(float xclick, float yclick)
 	
 }
 
+/**
+* Add pokeballs
+* \ param num num to add
+*/
 void COrbit::AddPokeball(int num)
 {
 	mPokeballs += num;
@@ -416,6 +428,15 @@ bool COrbit::Destroyed()
 			}
 
 			return true; 
+		}
+		if (other->NotActive())
+		{
+			auto loc3 = find(begin(mItems), end(mItems), other);
+			if (loc3 != end(mItems))
+			{
+				mItems.erase(loc3);
+			}
+			return true;
 		}
 	}
 	return false;
