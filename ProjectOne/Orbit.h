@@ -47,8 +47,6 @@ public:
 	/** Add the pokeball and change the pokestop color when clicking*/
 	void Click(float x, float y);
 
-	void ValidFirePokeball(int x, int y);
-
 	void AddPokeball(int num);
 
 	void SetXOffset(float width) { mXOffset = width; }
@@ -68,9 +66,8 @@ public:
 	/// Determine which Pokemon got caught
 	void DeterminePokemonCount(std::shared_ptr<CItem> item);
 
-protected:
-	/// Number of pokeballs in inventory
-	int mPokeballs = 11;
+
+	
 
 private:
 	/// Ash Ketchum image 
@@ -112,6 +109,9 @@ private:
 
 	/// Number of pikachu 
 	double mPikachu = 0; 
+
+	/// Number of pokeballs in inventory
+	int mPokeballs = 3;
 
 };
 

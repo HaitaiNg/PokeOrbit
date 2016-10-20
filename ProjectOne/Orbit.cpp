@@ -313,65 +313,56 @@ void COrbit::Click(float xclick, float yclick)
 	/// Adjust the x,y location base on the click point.
 	int mPointX = (xclick - this->GetXOffset()) * (1 / mScale);
 	int mPointY = (yclick - this->GetYOffset()) * (1 / mScale);
-
+	auto item = this->HitTest(mPointX, mPointY);
 	
 	if (mPokeballs > 0)
 	{
-		this->ValidFirePokeball(mPointX, mPointY);
-		
-	}
-	
-	
-	auto GrabbedItem = this->HitTest(mPointX, mPointY);
-	if (GrabbedItem != nullptr)
-	{
-		// We grabbed something
-		// Move it to the front
-		this->MoveToFront(GrabbedItem);
+		auto pokeball = make_shared<CPokeBall>(this);
+		pokeball->SetSpeed(mPointX, mPointY);
 		
 
-		// Create a visitor to change pokestop color to purple
-		CPokestopVisitor visitor;
-		GrabbedItem->Accept(&visitor);
-		
-	}
-	
-}
-
-void COrbit::ValidFirePokeball(int x, int y)
-{
-	auto pokeball = make_shared<CPokeBall>(this);
-	pokeball->SetSpeed(x, y);
-	auto item = this->HitTest(x, y);
-
-	if (sqrt(x * x + y * y) < Radius)
-	{
-
-		if (item == nullptr)
+		if (sqrt(mPointX * mPointX + mPointY * mPointY) < Radius)
 		{
-			this->Add(pokeball);
-			mPokeballs -= 1;
-			
-		}
-		else 
-		{
-			if (!item->IsPokeStop())
+
+			if (item == nullptr)
 			{
 				this->Add(pokeball);
 				mPokeballs -= 1;
-				
+
 			}
 			else
 			{
-				if (item->State())
+				if (!item->IsPokeStop())
 				{
 					this->Add(pokeball);
 					mPokeballs -= 1;
-					
+
 				}
-			
+				else
+				{
+					if (item->State())
+					{
+						this->Add(pokeball);
+						mPokeballs -= 1;
+
+					}
+
+				}
 			}
 		}
+		
+	}
+	
+	if (item != nullptr)
+	{
+		// We grabbed something
+		// Move it to the front
+		this->MoveToFront(item);
+		
+		// Create a visitor to change pokestop color to purple
+		CPokestopVisitor visitor;
+		item->Accept(&visitor);
+		
 	}
 	
 }
