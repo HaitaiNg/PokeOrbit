@@ -31,7 +31,7 @@ const double MaxSpeedY = 0.04;
 const double MinSpeedY = 0.04;
 
 /** Constructor
-* \param aquarium The aquarium this is a member of
+* \param orbit The orbit this is a member of
 */
 CCharmeleon::CCharmeleon(COrbit *orbit) :
 	CPokemon(orbit, CharmeleonImageName, Charmeleon)

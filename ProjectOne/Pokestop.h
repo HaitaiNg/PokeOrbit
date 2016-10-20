@@ -62,6 +62,11 @@ public:
 	* \return bool. This is a pokestop
 	*/
 	virtual bool State() { return mClicked; };
+
+	/**
+	* Is the pokestop active?
+	* \return bool default is false
+	*/
 	virtual bool NotActive() { return mNotActive; };
 private:
 	
@@ -70,7 +75,7 @@ private:
 
 	/// Determines if pokestop has been clicked on
 	bool mClicked = false;
-	bool mNotActive = false;
+	bool mNotActive = false; ///< determine if pokestop is active
 	long long mTime;    ///< Last time we read the timer
 	long long mStartTime;    ///< Start time when pokestop is clicked
 

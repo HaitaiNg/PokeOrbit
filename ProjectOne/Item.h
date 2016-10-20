@@ -103,10 +103,14 @@ public:
 
 	/**
 	 * Check the state of an item
-	 * \ return bool, default is false.
+	 * \return bool, default is false.
 	 */
 	virtual bool State() { return false; };
 
+	/**
+	* Check if pokestop is not active
+	* \return bool, default is false.
+	*/
 	virtual bool NotActive() { return false; };
 protected:
 	///Citem type

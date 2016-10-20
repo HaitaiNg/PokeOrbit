@@ -314,7 +314,8 @@ void COrbit::Accept(CItemVisitor *visitor)
 	}
 }
 /** Handle the adding pokeball and changing the pokestop color.
- *	\param xclick and yclick the location when clicking.
+ *	\param xclick the x location in pixels when clicking.
+ *  \param yclick the y location in pixels when clicking
  */
 void COrbit::Click(float xclick, float yclick)
 {
@@ -377,7 +378,7 @@ void COrbit::Click(float xclick, float yclick)
 
 /**
 * Add pokeballs
-* \ param num num to add
+* \param num num to add
 */
 void COrbit::AddPokeball(int num)
 {

@@ -28,7 +28,7 @@ public:
 	virtual void VisitPokestop(CPokestop *pokestop) override;
 
 	/** Return the state of the Pokestop 
-	* \ return bool 
+	*  \return bool state of pokestop
 	*/
 	bool ReturnPokestopLife() { return mPokestopLife; }
 

@@ -34,7 +34,8 @@ public:
 
 	/// Add an item to our collection 
 	void Add(std::shared_ptr<CItem> item);
-
+	
+	/// Delete an item from the collection
 	void Delete(std::shared_ptr<CItem> item);
 
 	/// Hit test on the orbit itself
@@ -53,10 +54,12 @@ public:
 	void Click(float x, float y);
 
 	/** Set the horizontal offset
+	* \param width
 	*/
 	void SetXOffset(float width) { mXOffset = width; }
 
 	/** Set the vertical offset
+	* \param height
 	*/
 	void SetYOffset(float height) { mYOffset = height; }
 
@@ -71,7 +74,7 @@ public:
 	float GetYOffset() { return mYOffset; }
 
 	/** Set the scale 
-	* \param float
+	* \param scale
 	*/
 	void SetScale(float scale) { mScale = scale; }
 
@@ -97,7 +100,7 @@ public:
 	void DeterminePokemonCount(std::shared_ptr<CItem> item);
 
 	/* Add pokeballs
-	* \param num
+	* \param num number of pokeballs to be added
 	*/
 	void AddPokeball(int num);
 	
@@ -117,9 +120,11 @@ private:
 
 	/// All of the items to populate our orbit
 	std::vector<std::shared_ptr<CItem> > mItems;
+
+	/// Radius of our orbit
 	float Radius = 500; 
 
-	//Pointer to object that will be destroyed 
+	/// Pointer to object that will be destroyed 
 	std::shared_ptr<CItem> mObject; 
 
 	/// horizontal offset 
@@ -128,7 +133,7 @@ private:
 	/// vertical offset 
 	float mYOffset;
 
-	///scale 
+	/// scale 
 	float mScale;
 
 	/// pointer to an Emitter object 

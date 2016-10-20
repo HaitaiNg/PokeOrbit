@@ -9,6 +9,10 @@
 #pragma once
 #include "Item.h"
 
+/**
+ * Rotational Item class derived from CItem
+ * Moves all items that move in a circle around the orbit
+ */
 class CRotationalItem :
 	public CItem
 {

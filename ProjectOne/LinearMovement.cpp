@@ -9,8 +9,11 @@
 #include "LinearMovement.h"
 #include "Orbit.h"
 
+
 /**
- * constructor
+ * Constructor
+ * \param orbit 
+ * \param filename 
  */
 CLinearMovement::CLinearMovement(COrbit *orbit, const std::wstring &filename) :
 	CItem(orbit, filename)

@@ -52,7 +52,7 @@ public:
 	virtual void VisitCharmeleon(CCharmeleon *charmeleon) {}
 
 	/** Visit a Pikachu object
-	* \param blastoise Blastoise we are visiting */
+	* \param pikachu Blastoise we are visiting */
 	virtual void VisitPikachu(CPikachu *pikachu) {}
 
 };

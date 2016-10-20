@@ -44,7 +44,7 @@ double PikachuRadius = 500;
 * \param orbit Orbit this Pokemon is a member of
 */
 /** Constructor
-* \param aquarium The aquarium this is a member of
+* \param orbit The orbit this is a member of
 */
 CPikachu::CPikachu(COrbit *orbit) :
 	CPokemon(orbit, PikachuImageName, Pikachu)
