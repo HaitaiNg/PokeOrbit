@@ -9,6 +9,7 @@
 #pragma once
 #include <memory>
 #include "RotationalItem.h"
+#include "Orbit.h"
 
 
 /**
@@ -63,7 +64,7 @@ public:
 	virtual bool State() { return mClicked; };
 
 private:
-
+	
 	/// The image of the loaded rocket
 	std::unique_ptr<Gdiplus::Bitmap> mClickedImage;
 

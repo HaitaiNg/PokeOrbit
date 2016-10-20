@@ -111,9 +111,11 @@ protected:
 	/// \param orbit, filename 
 	CItem(COrbit *orbit, const std::wstring &filename);
 
-private:
 	/// The aquarium this item is contained in
 	COrbit   *mOrbit;
+
+private:
+	
 
 	// Item location in the aquarium
 	double   mX = 0;     ///< X location for the center of the item

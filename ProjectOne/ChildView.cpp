@@ -146,7 +146,7 @@ void CChildView::OnPaint()
 	/// Determine if an item is destroyed in the orbit 
 	mOrbit.Destroyed(); 
 	
-
+	
 }
 
 

@@ -17,7 +17,8 @@ const wstring PokestopImageName(L"images/pokestop.png");
 /// Fish filename 
 const wstring PokestopClickedName(L"images/pokestop-used.png");
 
-
+/// const number to add when click the pokestop.
+const int NumberToAdd = 3;
 /**
  * Constructor
  * \param orbit the orbit system this item is a part of
@@ -119,6 +120,7 @@ void CPokestop::IsClicked()
 {
 	if (!mClicked)
 	{
+		mOrbit->AddPokeball(NumberToAdd);
 		mClicked = true;
 		
 		LARGE_INTEGER start;
