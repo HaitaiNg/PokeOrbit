@@ -12,6 +12,9 @@
 #include "Emitter.h"
 #include "PokestopVisitor.h"
 #include "PokemonVisitor.h"
+#include "string"
+#include <sstream>
+
 
 using namespace std; 
 using namespace Gdiplus;
@@ -166,34 +169,41 @@ void COrbit::Draw(Gdiplus::Graphics *graphics)
 	FontFamily fontFamily(L"Arial");
 	Gdiplus::Font font(&fontFamily, 16);
 
-
-
-	/// Draw pokemon when they are caught 
+	/// Score 
+	/// Draw a blastoise when a blastoise has been caught 
 	if (mBlastoise > 0)
-	{
+	{ 
+		wstringstream str;
+		str << mBlastoise << ends;  ///< convert double to string 
 
-		/// these are the general coordinates of where we want to draw the image. 
-		graphics->DrawImage(mBlastoiseImage.get(), float(500), float(-275), (float)mBlastoiseImage->GetWidth(), (float)mBlastoiseImage->GetHeight());
+		/// Coordinates for the blastoise score (upper right corner) 
+		graphics->DrawImage(mBlastoiseImage.get(), float(500), float(-275), 
+			(float)mBlastoiseImage->GetWidth(), (float)mBlastoiseImage->GetHeight());
 
 		/// Blastoise Brush 
 		SolidBrush BlastoiseBrush(Color(255, 255, 255));
-		graphics->DrawString(L"0",  // String to draw
+		graphics->DrawString(str.str().c_str(),  // String to draw
 			-1,         // String length, -1 means it figures it out on its own
 			&font,      // The font to use
 			PointF(625, -225),   // Where to draw (top left corner)
 			&BlastoiseBrush);    // The brush to draw the text with
+
 	}
 
+	/// Draw a charmeleon when a charmeleon has been caught 
 	if (mCharmeleon > 0)
 	{
+		wstringstream str;
+		str << mCharmeleon / 2 << ends;  ///< convert double to string 
 
-		/// these are the general coordinates of where we want to draw the image. 
-		graphics->DrawImage(mCharmeleonImage.get(), float(500), float(-400), (float)mCharmeleonImage->GetWidth(), (float)mCharmeleonImage->GetHeight());
+		/// Coordinates for the charmeleon score (upper right corner) 
+		graphics->DrawImage(mCharmeleonImage.get(), float(500), float(-400),
+			(float)mCharmeleonImage->GetWidth(), (float)mCharmeleonImage->GetHeight());
 
 
 		/// Charmeleon Brush 
 		SolidBrush CharmeleonBrush(Color(255, 255, 255));
-		graphics->DrawString(L"0",  // String to draw
+		graphics->DrawString(str.str().c_str(),  // String to draw
 			-1,         // String length, -1 means it figures it out on its own
 			&font,      // The font to use
 			PointF(625, -350),   // Where to draw (top left corner)
@@ -202,13 +212,15 @@ void COrbit::Draw(Gdiplus::Graphics *graphics)
 
 	if (mPikachu > 0)
 	{
+		wstringstream str;
+		str << mPikachu / 3 << ends;  ///< convert double to string 
 
 		/// these are the general coordinates of where we want to draw the image. 
 		graphics->DrawImage(mPikachuImage.get(), float(500), float(-500), (float)mPikachuImage->GetWidth(), (float)mPikachuImage->GetHeight());
 
 		/// Pikachu Brush 
 		SolidBrush PikachuBrush(Color(255, 255, 255));
-		graphics->DrawString(L"0",  // String to draw
+		graphics->DrawString(str.str().c_str(),  // String to draw
 			-1,         // String length, -1 means it figures it out on its own
 			&font,      // The font to use
 			PointF(625, -450),   // Where to draw (top left corner)
@@ -412,7 +424,6 @@ std::shared_ptr<CItem> COrbit::PokemonCaught(std::shared_ptr<CItem> item)
 		if (other->IsPokeball() && item->IsPokemon() &&
 			other->HitTest((int)item->GetX(), (int)item->GetY()))
 		{
-		//	mPokemonCaught += 1; ///< A pokemon has been caught! 
 			DeterminePokemonCount(item); 
 			return other;
 		}
