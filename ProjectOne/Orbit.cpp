@@ -245,11 +245,12 @@ void COrbit::Add(std::shared_ptr<CItem> item)
 
 void COrbit::Delete(std::shared_ptr<CItem> item)
 {
-//	for (auto item : mItems)
-	//{
-		auto loc = find(begin(mItems), end(mItems), item);
+	auto loc = find(begin(mItems), end(mItems), item);
+	if (loc != end(mItems))
+	{
 		mItems.erase(loc);
-	//}
+	}
+
 }
 
 
@@ -321,8 +322,8 @@ void COrbit::Accept(CItemVisitor *visitor)
 void COrbit::Click(float xclick, float yclick)
 {
 	/// Adjust the x,y location base on the click point.
-	int mPointX = (xclick - this->GetXOffset()) * (1 / mScale);
-	int mPointY = (yclick - this->GetYOffset()) * (1 / mScale);
+	mPointX = (xclick - this->GetXOffset()) * (1 / mScale);
+	mPointY = (yclick - this->GetYOffset()) * (1 / mScale);
 	auto item = this->HitTest(mPointX, mPointY);
 	
 	if (mPokeballs > 0)

@@ -136,6 +136,12 @@ private:
 	/// scale 
 	float mScale;
 
+	/// Click pointX
+	float mPointX;
+
+	/// Click pointY
+	float mPointY;
+
 	/// pointer to an Emitter object 
 	std::shared_ptr<CEmitter> mEmitter;
 
