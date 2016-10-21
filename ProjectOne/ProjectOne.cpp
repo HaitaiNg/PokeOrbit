@@ -1,3 +1,5 @@
+/// \cond
+
 /**
  * \file ProjectOne.cpp
  *
@@ -172,3 +174,4 @@ void CProjectOneApp::OnAppAbout()
 
 
 
+/// \endcond

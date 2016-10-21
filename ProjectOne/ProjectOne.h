@@ -1,3 +1,5 @@
+/// \cond
+
 /**
  * \file ProjectOne.h
  *
@@ -45,3 +47,5 @@ private:
 };
 
 extern CProjectOneApp theApp;
+
+/// \endcond
