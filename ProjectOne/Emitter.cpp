@@ -6,15 +6,17 @@
 #include "Charmeleon.h"
 #include "Pokestop.h"
 #include "Pikachu.h"
+
+
 /// Minimum time to generate a pokemon.
 const double PokemonTimeMin = 5;
 /// Maximum time to generate a pokemon.
 const double PokemonTimeMax = 5;
 
 /// Minimum time to generate a pokestop.
-const double PokestopTimeMin = 5;
+const double PokestopTimeMin = 10;
 /// Maximum time to generate a pokestop.
-const double PokestopTimeMax = 5;
+const double PokestopTimeMax = 60;
 
 /// Minimum number of pokemon.
 const int PokemonNumMin = 1;
@@ -75,10 +77,10 @@ void CEmitter::EmitPokemon()
 	switch (mPokemonNum)
 	{
 	case 1:
-		pokemon = std::make_shared<CBlastoise>(mOrbit);
+		pokemon = std::make_shared<CCharmeleon>(mOrbit);
 		break;
 	case 2:
-		pokemon = std::make_shared<CCharmeleon>(mOrbit);
+		pokemon = std::make_shared<CBlastoise>(mOrbit);
 		break;
 	case 3:
 		pokemon = std::make_shared<CPikachu>(mOrbit);

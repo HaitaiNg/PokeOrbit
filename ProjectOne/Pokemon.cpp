@@ -13,7 +13,7 @@
 * Constructor
 * \param orbit The orbit we are in
 * \param filename Filename for the image we use
-* \param typ The pokemon type (blastoise, charmeleon, pikachu 
+* \param type The pokemon type (blastoise, charmeleon, pikachu 
 */
 CPokemon::CPokemon(COrbit *orbit, const std::wstring &filename, PokemonType type) :
 	CRotationalItem(orbit, filename)

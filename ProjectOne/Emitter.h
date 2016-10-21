@@ -48,6 +48,6 @@ private:
 	/// Create Pokestop 
 	void EmitPokestop();
 
-	//CEmitter mEmitter; 
+	
 };
 

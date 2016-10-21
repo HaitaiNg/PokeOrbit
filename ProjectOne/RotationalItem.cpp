@@ -8,9 +8,11 @@
 #include "RotationalItem.h"
 
  /// Maximum range up and down. This is 
- /// the maximum distance the fish will swim
- /// up and down in pixels
+ /// the maximum distance the item will move in pixels
 const double MaxYRange = 500;
+
+/// Maximum range side to side. This is 
+/// the maximum distance the item will move in pixels
 const double MaxXRange = 500;
 
 

@@ -9,6 +9,7 @@
 #pragma once
 #include <memory>
 #include "RotationalItem.h"
+#include "Orbit.h"
 
 
 /**
@@ -62,17 +63,22 @@ public:
 	*/
 	virtual bool State() { return mClicked; };
 
+	/**
+	* Is the pokestop active?
+	* \return bool default is false
+	*/
+	virtual bool NotActive() { return mNotActive; };
 private:
-
+	
 	/// The image of the loaded rocket
 	std::unique_ptr<Gdiplus::Bitmap> mClickedImage;
 
 	/// Determines if pokestop has been clicked on
 	bool mClicked = false;
-
+	bool mNotActive = false; ///< determine if pokestop is active
 	long long mTime;    ///< Last time we read the timer
 	long long mStartTime;    ///< Start time when pokestop is clicked
 
-	long mLife; ///< time before pokestop disappears 
+	double mLife = 0; ///< time before pokestop disappears 
 };
 

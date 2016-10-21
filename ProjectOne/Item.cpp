@@ -12,7 +12,8 @@ using namespace Gdiplus;
 using namespace std;
 
 /** Constructor
-* \param aquarium The aquarium this item is a member of
+* \param orbit The orbit this item is a member of
+* \param filename the filename of the item image
 */
 CItem::CItem(COrbit *orbit, const std::wstring &filename) :
 	mOrbit(orbit)

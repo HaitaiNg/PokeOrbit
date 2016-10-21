@@ -103,18 +103,25 @@ public:
 
 	/**
 	 * Check the state of an item
-	 * \ return bool, default is false.
+	 * \return bool, default is false.
 	 */
 	virtual bool State() { return false; };
 
+	/**
+	* Check if pokestop is not active
+	* \return bool, default is false.
+	*/
+	virtual bool NotActive() { return false; };
 protected:
 	///Citem type
 	/// \param orbit, filename 
 	CItem(COrbit *orbit, const std::wstring &filename);
 
-private:
 	/// The aquarium this item is contained in
 	COrbit   *mOrbit;
+
+private:
+	
 
 	// Item location in the aquarium
 	double   mX = 0;     ///< X location for the center of the item

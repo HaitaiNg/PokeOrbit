@@ -3,15 +3,15 @@
  *
  * \author Haitai Ng 
  *
- *  Base class for all items that move in a circle around Ash 
+ * 
  */
 
 #pragma once
 #include "Item.h"
 
-
 /**
- * Base class for all our items that rotate in around ash (Pokemon, Pokestops) 
+ * Rotational Item class derived from CItem
+ * Moves all items that move in a circle around the orbit
  */
 class CRotationalItem :
 	public CItem

@@ -17,7 +17,8 @@ const wstring PokestopImageName(L"images/pokestop.png");
 /// Fish filename 
 const wstring PokestopClickedName(L"images/pokestop-used.png");
 
-
+/// const number to add when click the pokestop.
+const int NumberToAdd = 3;
 /**
  * Constructor
  * \param orbit the orbit system this item is a part of
@@ -93,22 +94,26 @@ void CPokestop::Update(double elapsed)
 	CRotationalItem::Update(elapsed);
 
 	// Timer if pokestop is clicked on
+	LARGE_INTEGER frequency;
+	LARGE_INTEGER end;
+	double elapsedSeconds;
+	QueryPerformanceFrequency(&frequency);
+	mLife += elapsed;
+
+	QueryPerformanceCounter(&end);
+	elapsedSeconds = (end.QuadPart - mStartTime) / (double)frequency.QuadPart;
+	
 	if (mClicked)
 	{
-		LARGE_INTEGER frequency;
-		LARGE_INTEGER end;
-		double elapsedSeconds;
-		QueryPerformanceFrequency(&frequency);
-		
-
-		QueryPerformanceCounter(&end);
-		elapsedSeconds = (end.QuadPart - mStartTime) / (double)frequency.QuadPart;
-
 		if (elapsedSeconds > 15)
 		{
 			mClicked = false;
 		}
-
+	}
+	else
+	{
+		if (mLife >= 60)
+			mNotActive = true;
 	}
 }
 
@@ -119,6 +124,7 @@ void CPokestop::IsClicked()
 {
 	if (!mClicked)
 	{
+		mOrbit->AddPokeball(NumberToAdd);
 		mClicked = true;
 		
 		LARGE_INTEGER start;

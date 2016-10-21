@@ -28,6 +28,8 @@ const static int Height = 1100;
 /// Radius of the playing read in virtual pixels
 const static int Radius = 500;
 
+/// Maximum pokeball number;
+const int MaxPokeballNum = 13;
 /**
  * Constructor 
  */
@@ -240,6 +242,14 @@ void COrbit::Add(std::shared_ptr<CItem> item)
 	mItems.push_back(item);
 }
 
+void COrbit::Delete(std::shared_ptr<CItem> item)
+{
+	for (auto item : mItems)
+	{
+		auto loc = find(begin(mItems), end(mItems), item);
+		mItems.erase(loc);
+	}
+}
 
 
 /** Test an x,y click location to see if it clicked
@@ -304,31 +314,38 @@ void COrbit::Accept(CItemVisitor *visitor)
 	}
 }
 /** Handle the adding pokeball and changing the pokestop color.
- *	\param xclick and yclick the location when clicking.
+ *	\param xclick the x location in pixels when clicking.
+ *  \param yclick the y location in pixels when clicking
  */
 void COrbit::Click(float xclick, float yclick)
 {
 	/// Adjust the x,y location base on the click point.
 	int mPointX = (xclick - this->GetXOffset()) * (1 / mScale);
 	int mPointY = (yclick - this->GetYOffset()) * (1 / mScale);
-
-	auto pokeball = make_shared<CPokeBall>(this);
-	pokeball->SetSpeed(mPointX, mPointY);
+	auto item = this->HitTest(mPointX, mPointY);
+	
 	if (mPokeballs > 0)
 	{
+		auto pokeball = make_shared<CPokeBall>(this);
+		pokeball->SetSpeed(mPointX, mPointY);
+		
+
 		if (sqrt(mPointX * mPointX + mPointY * mPointY) < Radius)
 		{
-			auto item = this->HitTest(mPointX, mPointY);
+
 			if (item == nullptr)
 			{
 				this->Add(pokeball);
 				mPokeballs -= 1;
+
 			}
 			else
+			{
 				if (!item->IsPokeStop())
 				{
 					this->Add(pokeball);
 					mPokeballs -= 1;
+
 				}
 				else
 				{
@@ -336,30 +353,41 @@ void COrbit::Click(float xclick, float yclick)
 					{
 						this->Add(pokeball);
 						mPokeballs -= 1;
+
 					}
-					
+
 				}
+			}
 		}
+		
 	}
 	
-
-	auto GrabbedItem = this->HitTest(mPointX, mPointY);
-	if (GrabbedItem != nullptr)
+	if (item != nullptr)
 	{
 		// We grabbed something
 		// Move it to the front
-		this->MoveToFront(GrabbedItem);
+		this->MoveToFront(item);
 		
-
 		// Create a visitor to change pokestop color to purple
 		CPokestopVisitor visitor;
-		GrabbedItem->Accept(&visitor);
+		item->Accept(&visitor);
 		
-
 	}
 	
 }
 
+/**
+* Add pokeballs
+* \param num num to add
+*/
+void COrbit::AddPokeball(int num)
+{
+	mPokeballs += num;
+	if (mPokeballs > MaxPokeballNum)
+	{
+		mPokeballs = MaxPokeballNum;
+	}
+}
 /**
  * Destroy an object in the mItems 
  * \returns bool 
@@ -401,6 +429,15 @@ bool COrbit::Destroyed()
 			}
 
 			return true; 
+		}
+		if (other->NotActive())
+		{
+			auto loc3 = find(begin(mItems), end(mItems), other);
+			if (loc3 != end(mItems))
+			{
+				mItems.erase(loc3);
+			}
+			return true;
 		}
 	}
 	return false;
