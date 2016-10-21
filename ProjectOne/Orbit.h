@@ -154,5 +154,8 @@ private:
 	/// Number of pokeballs in inventory
 	int mPokeballs = 3;
 
+	/// Vector to remove contents 
+	std::vector<std::shared_ptr<CItem> > toRemove;
+
 };
 

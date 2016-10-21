@@ -208,39 +208,3 @@ void CChildView::OnTimer(UINT_PTR nIDEvent)
 
 }
 
-
-/**
- *  Display the rotatinal pokemon 
- * \param time 
- */
-/**
-void CChildView::DisplayRotationalPokemon(double time)
-{
-	if (time > 0)
-	{
-		/// to place image at origin use: x = -image->GetWidth() / 4 , y = -image->GetHeight() / 4 
-
-		///Add Pokestop 
-		auto pokestop = make_shared<CPokestop>(&mOrbit);
-		mOrbit.Add(pokestop);
-		Invalidate();
-
-		/// Add Blastoise 
-		auto blastoise = make_shared<CBlastoise>(&mOrbit);
-		mOrbit.Add(blastoise);
-		Invalidate();
-
-		/// Add Charmeleon
-		auto charmeleon = make_shared<CCharmeleon>(&mOrbit);
-		mOrbit.Add(charmeleon);
-		Invalidate();
-		
-		/// Add Pikachu 
-		auto pikachu = make_shared<CPikachu>(&mOrbit);
-		mOrbit.Add(pikachu);
-		Invalidate();
-				 
-	}
-
-	
-} */ 

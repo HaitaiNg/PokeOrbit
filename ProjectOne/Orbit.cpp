@@ -13,6 +13,7 @@
 #include "PokestopVisitor.h"
 #include "PokemonVisitor.h"
 #include "string"
+#include <vector>
 #include <sstream>
 
 
@@ -244,11 +245,11 @@ void COrbit::Add(std::shared_ptr<CItem> item)
 
 void COrbit::Delete(std::shared_ptr<CItem> item)
 {
-	for (auto item : mItems)
-	{
+//	for (auto item : mItems)
+	//{
 		auto loc = find(begin(mItems), end(mItems), item);
 		mItems.erase(loc);
-	}
+	//}
 }
 
 
@@ -394,50 +395,39 @@ void COrbit::AddPokeball(int num)
  */
 bool COrbit::Destroyed()
 {
+
 	for (auto other : mItems) ///< iterate through collection 
 	{
 		/// Determine if a pokeball has hit a pokemon 
 		mObject = PokemonCaught(other);
 
-		/// If pokeball hits the green circle, destroy it 
-		if (other->DestroyObject()) //< determine if the object needs to be destroyed (Pokeball) 
+		/// If pokeball hits the green circle, destroy it, if a pokestop is 60 sec old, destroy it  
+		if (other->DestroyObject() || other->NotActive()) 
 		{
-			auto loc = find(begin(mItems), end(mItems), other);
-			if (loc != end(mItems))
-			{
-				mItems.erase(loc);
-			}
-			return true;
+			toRemove.push_back(other);
 		} 
 
 		/// If the pokeball hits a pokemon, then mObject will not equal nullptr 
-		if (mObject != nullptr)
+		else if (mObject != nullptr)
 		{
+			toRemove.push_back(mObject); 
+			toRemove.push_back(other); 
+		}
 
-			/// Delete the pokemon from the mItems 
-			auto loc = find(begin(mItems), end(mItems), mObject);
-			if (loc != end(mItems))
+		/// If the toRemove vector is not empty 
+		if (toRemove.empty() == false)
+		{
+			double x = toRemove.size();
+			double y = mItems.size(); 
+
+			for (auto item : toRemove)
 			{
-				mItems.erase(loc);
+				Delete(item);
+				
 			}
 			
-			/// Delete the pokeball from the mItems 
-			auto loc2 = find(begin(mItems), end(mItems), other);
-			if (loc2 != end(mItems))
-			{
-				mItems.erase(loc2);
-			}
-
+			
 			return true; 
-		}
-		if (other->NotActive())
-		{
-			auto loc3 = find(begin(mItems), end(mItems), other);
-			if (loc3 != end(mItems))
-			{
-				mItems.erase(loc3);
-			}
-			return true;
 		}
 	}
 	return false;
@@ -467,12 +457,6 @@ std::shared_ptr<CItem> COrbit::PokemonCaught(std::shared_ptr<CItem> item)
 			DeterminePokemonCount(item); 
 			return other;
 		}
-
-		/// Do not delete Pokestops when it is in contact with other objects 
-		//if (other->IsPokeStop() == true )
-		//{
-			//return nullptr;
-		//}
 	}
 	return nullptr; 
 }

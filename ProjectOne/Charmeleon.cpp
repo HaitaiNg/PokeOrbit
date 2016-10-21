@@ -30,6 +30,9 @@ const double MaxSpeedY = 0.04;
 //! in pixels per second
 const double MinSpeedY = 0.04;
 
+//! Default radius 
+double CharmeleonRadius = 500;
+
 /** Constructor
 * \param orbit The orbit this is a member of
 */
