@@ -42,6 +42,12 @@ public:
 	/// Return the angle 
 	virtual double SetAngle();
 
+	/// Return the x position
+	double ReturnXPosition();
+
+	/// Return the y position 
+	double ReturnYPosition();
+
 	/** Accept a visitor
 	* \param visitor The visitor we accept */
 	virtual void Accept(CItemVisitor *visitor) override { visitor->VisitRotationalItem(this); }
@@ -67,6 +73,12 @@ private:
 
 	///Get the angle
 	double mAngle;
+
+	/// x position 
+	double mX;
+
+	/// y position 
+	double mY;
 
 };
 

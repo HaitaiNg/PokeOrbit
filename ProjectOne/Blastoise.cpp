@@ -30,6 +30,9 @@ const double MaxSpeedY = 0.01;
 //! in pixels per second
 const double MinSpeedY = 0.03;
 
+//! Default radius 
+double BlastoiseRadius = 500;
+
  /** Constructor
  * \param orbit The orbit this is a member of
  */
