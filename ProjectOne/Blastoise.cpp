@@ -16,7 +16,7 @@ const wstring BlastoiseImageName(L"images/blastoise.png");
 
 //! Maximum speed in the X direction in
 //! in pixels per second
-const double MaxSpeedX = 0.005;
+const double MaxSpeedX = 0.02;
 
 //! Minimum speed in the X direction in
 //! in pixels per second
@@ -24,14 +24,11 @@ const double MinSpeedX = 0.02;
 
 //! Maximum speed in the Y direction in
 //! in pixels per second
-const double MaxSpeedY = 0.01;
+const double MaxSpeedY = 0.02;
 
 //! Minimum speed in the Y direction in
 //! in pixels per second
-const double MinSpeedY = 0.03;
-
-//! Default radius 
-double BlastoiseRadius = 500;
+const double MinSpeedY = 0.02;
 
  /** Constructor
  * \param orbit The orbit this is a member of

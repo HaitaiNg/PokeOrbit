@@ -63,9 +63,6 @@ private:
 	/// Object speed in the Y direction
 	double mSpeedY;
 
-	/// Object movement speed in the X direction 
-	double mObjectSpeedRatio;
-
 	/// The elapsed time since construction
 	double mTime = 0;
 	/// Compute random range; 

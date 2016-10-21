@@ -22,22 +22,20 @@ const wstring PikachuImageName(L"images/pikachu.png");
 
 //! Maximum speed in the X direction in
 //! in pixels per second
-const double MaxSpeedX = 0.06;
+const double MaxSpeedX = 0.09;
 
 //! Minimum speed in the X direction in
 //! in pixels per second
-const double MinSpeedX = 0.06;
+const double MinSpeedX = 0.09;
 
 //! Maximum speed in the Y direction in
 //! in pixels per second
-const double MaxSpeedY = 0.06;
+const double MaxSpeedY = 0.09;
 
 //! Minimum speed in the Y direction in
 //! in pixels per second
-const double MinSpeedY = 0.06;
+const double MinSpeedY = 0.09;
 
-//! Default radius 
-double PikachuRadius = 500;
 
 /**
 * Constructor

@@ -30,7 +30,7 @@ CPokestop::CPokestop(COrbit *orbit):
 
 	Load(mClickedImage, PokestopClickedName);
 
-	SetSpeed(0.02, 0.02, 0.02, 0.02);
+	SetSpeed(0.001, 0.001, 0.001, 0.001);
 	SetRadius();
 	SetAngle();
 
