@@ -59,8 +59,8 @@ void CRotationalItem::Update(double elapsed)
  */
 void CRotationalItem::SetSpeed(double minX, double maxX, double minY, double maxY)
 {
-	mSpeedX = -(((rand() % 3) / 5) + minX);
-	mSpeedY = -(((rand() % 3) / 5) + minY);
+	mSpeedX = -(( minX + (rand() % 3) / 10) / 10   );
+	mSpeedY = -(( minY + (rand() % 3) / 10) / 10   );
 }
 
 
