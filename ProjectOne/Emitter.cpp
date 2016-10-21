@@ -85,21 +85,12 @@ void CEmitter::EmitPokemon()
 	{
 	case 1:
 		pokemon = std::make_shared<CCharmeleon>(mOrbit);
-		mX = pokemon->ReturnXPosition();
-		mY = pokemon->ReturnYPosition();
-		pokemon->SetLocation(mX, mY);
 		break;
 	case 2:
 		pokemon = std::make_shared<CBlastoise>(mOrbit);
-		mX = pokemon->ReturnXPosition();
-		mY = pokemon->ReturnYPosition();
-		pokemon->SetLocation(mX, mY);
 		break;
 	case 3:
 		pokemon = std::make_shared<CPikachu>(mOrbit);
-		mX = pokemon->ReturnXPosition();
-		mY = pokemon->ReturnYPosition();
-		pokemon->SetLocation(mX, mY);
 		break;
 	default: 
 		break;

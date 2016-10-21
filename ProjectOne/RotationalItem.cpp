@@ -38,14 +38,20 @@ CRotationalItem::~CRotationalItem()
 /// \param elapsed The time since the last update
 void CRotationalItem::Update(double elapsed)
 {
-	mX = mRadius * cos(mAngle);
-	mY = -mRadius * sin(mAngle);
+	double x = mRadius * cos(mAngle);
+	double y = -mRadius * sin(mAngle);
 
-	mX += mSpeedX * mX * elapsed;
-	mY += mSpeedY * mY * elapsed;
+	double sn = sin(mAngle);
+	double cs = cos(mAngle);
+
+	double newX = cs * x + sn * y;
+	double newY = -sn * x + cs * y;
+
+	x += mSpeedX * x * elapsed;
+	y += mSpeedY * y * elapsed;
 
 	mAngle += 0.01;
-	SetLocation(mX, mY);
+	SetLocation(x, y);
 
 }
 
@@ -95,21 +101,3 @@ double CRotationalItem::SetAngle()
 	return mAngle;
 }
 
-
-/**
- * Return the x position for the emitter class 
- * \returns position x 
- */
-double CRotationalItem::ReturnXPosition()
-{
-	return mX; 
-}
-
-/**
-* Return the y position for the emitter class
-* \returns position y
-*/
-double CRotationalItem::ReturnYPosition()
-{
-	return mY;
-}

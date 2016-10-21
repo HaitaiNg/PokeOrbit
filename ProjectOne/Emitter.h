@@ -48,11 +48,6 @@ private:
 	/// Create Pokestop 
 	void EmitPokestop();
 
-	/// x position of item when created 
-	double mX;
-	/// y position of item when created 
-	double mY;
-
 	
 };
 
