@@ -50,7 +50,7 @@ const int FrameDuration = 30;
 */
 CChildView::CChildView()
 {
-	//srand((unsigned int)time(nullptr)); //< random number generator 
+	srand((unsigned int)time(nullptr)); //< random number generator 
 	
 	
 }
@@ -213,6 +213,7 @@ void CChildView::OnTimer(UINT_PTR nIDEvent)
  *  Display the rotatinal pokemon 
  * \param time 
  */
+/**
 void CChildView::DisplayRotationalPokemon(double time)
 {
 	if (time > 0)
@@ -242,4 +243,4 @@ void CChildView::DisplayRotationalPokemon(double time)
 	}
 
 	
-}
+} */ 

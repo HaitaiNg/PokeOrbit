@@ -1,3 +1,9 @@
+/**
+ * \file Emitter.cpp
+ *
+ * \author Quan Zhou 
+ */
+
 
 #include "stdafx.h"
 #include "Emitter.h"
@@ -9,7 +15,7 @@
 
 
 /// Minimum time to generate a pokemon.
-const double PokemonTimeMin = 5;
+const double PokemonTimeMin = 1;
 /// Maximum time to generate a pokemon.
 const double PokemonTimeMax = 5;
 
@@ -71,7 +77,8 @@ void CEmitter::Update(double elapsed)
  */
 void CEmitter::EmitPokemon()
 {
-	mPokemonNum = PokemonNumMin + ((double)rand() / RAND_MAX) * (PokemonNumMax - PokemonNumMin);
+	mPokemonNum = rand() % PokemonNumMax; 
+
 	std::shared_ptr<CRotationalItem> pokemon;
 
 	switch (mPokemonNum)
