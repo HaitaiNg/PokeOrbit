@@ -416,16 +416,13 @@ bool COrbit::Destroyed()
 		}
 
 		/// If the toRemove vector is not empty 
-		if (toRemove.empty() == false)
+		if (!toRemove.empty())
 		{
-			double x = toRemove.size();
-			double y = mItems.size(); 
-
 			for (auto item : toRemove)
 			{
 				Delete(item);
-				
 			}
+			toRemove.clear();
 			
 			
 			return true; 
