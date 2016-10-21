@@ -58,10 +58,7 @@ private:
 	double mSpeedY;
 
 	/// Object movement speed in the X direction 
-	double mObjectSpeedX;
-
-	/// Object movement speed in the Y direction
-	double mObjectSpeedY;
+	double mObjectSpeedRatio;
 
 	/// The elapsed time since construction
 	double mTime = 0;

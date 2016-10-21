@@ -48,7 +48,7 @@ void CRotationalItem::Update(double elapsed)
 	double newY = -sn * x + cs * y;
 
 	x += mSpeedX * x * elapsed;
-	y += mSpeedX * y * elapsed;
+	y += mSpeedY * y * elapsed;
 
 	mAngle += 0.01;
 	SetLocation(x, y);
@@ -65,7 +65,18 @@ void CRotationalItem::Update(double elapsed)
  */
 void CRotationalItem::SetSpeed(double minX, double maxX, double minY, double maxY)
 {
-	mSpeedX = -minX;
+	mObjectSpeedRatio = rand() % 2; 
+
+	if( mObjectSpeedRatio == 1 )
+	{
+		mSpeedX = -(((rand() % 3) / 10) + minX);
+		mSpeedY = -(((rand() % 3) / 10) + minY);
+	}
+	else
+	{
+		mSpeedX = -(((rand() % 3) / 10) + maxX);
+		mSpeedY = -(((rand() % 3) / 10) + maxY);
+	}
 }
 
 
