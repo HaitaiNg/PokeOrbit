@@ -31,9 +31,9 @@ public:
 	virtual ~CPokeBall();
 
 	/**
-	* Is this object a pokeball?
-	* \return bool. This is a pokeball
+	* Is it valid to catch
+	* \return bool. Valid to ctach Pokemon 
 	*/
-	bool IsPokeball() { return true; }
+	bool ValidToCatch() { return true; }
 };
 

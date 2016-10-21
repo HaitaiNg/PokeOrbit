@@ -37,7 +37,7 @@ public:
 	enum PokemonType {Blastoise, Charmeleon, Pikachu};
 	
 	/// Get the Pokemon type 
-	PokemonType GetType() { return mType; }
+	PokemonType GetPokemonCaught() { return mType; }
 
 	/// Determine the Pokemon type
 	void DeterminePokemonType();

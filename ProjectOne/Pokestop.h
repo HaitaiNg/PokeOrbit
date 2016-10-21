@@ -52,10 +52,10 @@ public:
 	void IsClicked();
 
 	/**
-	* Is this object a pokestop?
-	* \return bool. This is a pokestop 
+	* Valid to add pokeball?
+	* \return bool. If it is valid a pokeball 
 	*/
-	bool IsPokeStop() { return true; }
+	bool ValidToAddPokeball() { return true; }
 
 	/**
 	* Is the pokestop clicked?

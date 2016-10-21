@@ -87,7 +87,7 @@ public:
 	* Is this object a pokeball?
 	* \return bool. The default is false
 	*/
-	virtual bool IsPokeball() { return false; }
+	virtual bool ValidToCatch() { return false; }
 
 	/** 
 	* Is this object a pokemon?
@@ -99,7 +99,7 @@ public:
 	* Is this object a pokestop?
 	* \return bool. The default is false
 	*/
-	virtual bool IsPokeStop() { return false; }
+	virtual bool ValidToAddPokeball() { return false; }
 
 	/**
 	 * Check the state of an item

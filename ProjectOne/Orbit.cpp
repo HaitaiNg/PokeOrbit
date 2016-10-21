@@ -343,7 +343,7 @@ void COrbit::Click(float xclick, float yclick)
 			}
 			else
 			{
-				if (!item->IsPokeStop())
+				if (!item->ValidToAddPokeball())
 				{
 					this->Add(pokeball);
 					mPokeballs -= 1;
@@ -449,7 +449,7 @@ std::shared_ptr<CItem> COrbit::PokemonCaught(std::shared_ptr<CItem> item)
 
 		/// If one object is a pokeball, and the other item (pokemon) is on top then return the pointer for the pokeball
 		/// so it can be deleted in Destroyed() 
-		if (other->IsPokeball() && item->IsPokemon() &&
+		if (other->ValidToCatch() && item->IsPokemon() &&
 			other->HitTest((int)item->GetX(), (int)item->GetY()))
 		{
 			DeterminePokemonCount(item); 
