@@ -58,7 +58,7 @@ void CRotationalItem::Update(double elapsed)
  * Set speed for the object 
  * \param minX 
  * \param maxX 
- * \param minY 
+ * \param mThreshold 
  * \param maxY 
  */
 void CRotationalItem::SetSpeed(double minX, double maxX, double mThreshold, double maxY)

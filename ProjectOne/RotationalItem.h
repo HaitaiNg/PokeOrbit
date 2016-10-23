@@ -34,7 +34,7 @@ public:
 	virtual void Update(double elapsed);
 
 	/// Set the speed of our Pokemon 
-	virtual void SetSpeed(double minX, double maxX, double minY, double maxY);
+	virtual void SetSpeed(double minX, double maxX, double mThreshold, double maxY);
 
 	/// Return the radius so that all pokemon are properly centered around ash 
 	virtual double SetRadius();
@@ -62,6 +62,7 @@ private:
 
 	/// The elapsed time since construction
 	double mTime = 0;
+
 	/// Compute random range; 
 	double mRadius;
 
@@ -77,7 +78,7 @@ private:
 	/// sine coordinate
 	double sn; 
 	
-	/// co coordinate
+	/// cos coordinate
 	double cs;
 
 	/// new X coordinate
