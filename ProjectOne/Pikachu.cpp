@@ -22,11 +22,11 @@ const wstring PikachuImageName(L"images/pikachu.png");
 
 //! Maximum speed in the X direction in
 //! in pixels per second
-const double MaxSpeedX = 0.09;
+const double MaxSpeedX = 1.5;
 
 //! Minimum speed in the X direction in
 //! in pixels per second
-const double MinSpeedX = 0.09;
+const double MinSpeedX = 1;
 
 //! Maximum speed in the Y direction in
 //! in pixels per second
@@ -34,7 +34,7 @@ const double MaxSpeedY = 0.09;
 
 //! Minimum speed in the Y direction in
 //! in pixels per second
-const double MinSpeedY = 0.09;
+const double SpeedMin = 1;
 
 
 /**
@@ -47,7 +47,7 @@ const double MinSpeedY = 0.09;
 CPikachu::CPikachu(COrbit *orbit) :
 	CPokemon(orbit, PikachuImageName, Pikachu)
 {
-	SetSpeed(MinSpeedX, MaxSpeedX, MinSpeedY, MaxSpeedY);
+	SetSpeed(MinSpeedX, MaxSpeedX, SpeedMin, MaxSpeedY);
 	SetRadius();
 	SetAngle(); 
 }

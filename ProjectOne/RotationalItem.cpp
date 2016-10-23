@@ -38,14 +38,18 @@ CRotationalItem::~CRotationalItem()
 /// \param elapsed The time since the last update
 void CRotationalItem::Update(double elapsed)
 {
-	mX = mRadius * cos(mAngle);
-	mY = -mRadius * sin(mAngle);
+	mX = mRadius * cos(mAngle * mSpeedRatio);
+	mY = -mRadius * sin(mAngle * mSpeedRatio);
 
-	mX += mSpeedX * mX * elapsed;
-	mY += mSpeedY * mY * elapsed;
+	sn = sin(mAngle * mSpeedRatio);
+	cs = cos(mAngle * mSpeedRatio);
+
+	newX = cs * mX + sn * mY;
+	newY = -sn * mX + cs * mY;
 
 	mAngle += 0.01;
-	SetLocation(mX, mY);
+
+	SetLocation(newX, newY);
 
 }
 
@@ -57,10 +61,10 @@ void CRotationalItem::Update(double elapsed)
  * \param minY 
  * \param maxY 
  */
-void CRotationalItem::SetSpeed(double minX, double maxX, double minY, double maxY)
+void CRotationalItem::SetSpeed(double minX, double maxX, double mThreshold, double maxY)
 {
-	mSpeedX = -(( minX + (rand() % 3) / 10) / 10   );
-	mSpeedY = -(( minY + (rand() % 3) / 10) / 10   );
+
+	mSpeedRatio = mThreshold + ((double) rand() / RAND_MAX) * (maxX - minX); 
 }
 
 

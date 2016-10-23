@@ -58,10 +58,7 @@ protected:
 
 private:
 	/// Object speed in the X direction
-	double mSpeedX;
-
-	/// Object speed in the Y direction
-	double mSpeedY;
+	double mSpeedRatio; 
 
 	/// The elapsed time since construction
 	double mTime = 0;
@@ -76,6 +73,18 @@ private:
 
 	/// y position 
 	double mY;
+
+	/// sine coordinate
+	double sn; 
+	
+	/// co coordinate
+	double cs;
+
+	/// new X coordinate
+	double newX;
+
+	/// new Y coordinate 
+	double newY; 
 
 };
 
