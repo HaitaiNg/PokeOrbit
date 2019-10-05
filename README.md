@@ -1,2 +1,2 @@
 Pokemon Game using Visual C++.
-![Pokemone UML] (/PokemonGame/oh)
+![Pokemone UML] (/images/pokemonUML.png)
